@@ -3,35 +3,29 @@
 #### 介绍
 基于layui以及pear-Admin-layui开发的API管理后台
 
-#### 软件架构
-软件架构说明
+#### 版本要求
+PHP5.0以上版本
+Mysql
+
 
 
 #### 安装教程
+将源码上传至网站根目录，然后登录网站数据库，新建一张user表单并在表单内添加username,password
+默认api管理后台路径网址/admin-mxy
+注意，到手后请将默认的admin文件夹修改为你个人路径，因为现在还没有做安全防护处理，所以请务必修改默认路径
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+#### 使用截图
+<h>登录界面</h>
+![输入图片说明](2022-07-24-135808_1680x1050_scrot.png)
+<h>主界面</h>
+![输入图片说明](2022-07-24-135821_1680x1050_scrot.png)
+<h>API前台预览</h>
+![输入图片说明](2022-07-24-135826_1680x1050_scrot.png)
+<h>API信息管理界面</h>
+![输入图片说明](2022-07-24-203348_1680x1050_scrot.png)
 
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
 
 #### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+本人是web新手，所以写的系统漏洞肯定是有的，所以还要请各位大佬一起完善系统，如果您有建议可以提交lessure
 
 
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
