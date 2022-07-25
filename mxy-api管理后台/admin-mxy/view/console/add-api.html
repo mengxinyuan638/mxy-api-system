@@ -66,6 +66,7 @@
                     //AJAX请求
                     $.post("../../admin/api/addapi.php",res.field,function(d){
                         console.log(d)
+                        console.log(res.field)
                         if(d.code!=200){
                           layer.msg(d.msg);
                         }

@@ -90,6 +90,17 @@ layui.use(['table','layer','form'],function(){
       end:function(){
         //表格数据刷新
         table.reload('tableID');
+      },
+      success:function(layero, index){
+        //数据回显
+        var body = layer.getChildFrame('body', index);
+        body.find("#api-name").val(obj.data.name);//回显名称
+        body.find("#api-gg").val(obj.data.gg);//回显
+        body.find("#api-dz").val(obj.data.dz);//回显
+        body.find("#api-cs").val(obj.data.cs);//回显
+        body.find("#api-sl").val(obj.data.sl);//回显
+        body.find("#api-sj").val(obj.data.sj);//回显
+        body.find("input[name='id']").attr({'value':obj.data.id});
       }
     });
     }
