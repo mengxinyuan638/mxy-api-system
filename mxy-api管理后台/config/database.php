@@ -28,11 +28,11 @@ return [
             // 服务器地址
             'hostname'        => env('database.hostname', 'localhost'),
             // 数据库名
-            'database'        => env('database.database', 'api_backstage'),
+            'database'        => env('database.database', ''),
             // 用户名
-            'username'        => env('database.username', 'mengxinyuan'),
+            'username'        => env('database.username', ''),
             // 密码
-            'password'        => env('database.password', '@zsy23782030'),
+            'password'        => env('database.password', ''),
             // 端口
             'hostport'        => env('database.hostport', '3306'),
             // 数据库连接参数
