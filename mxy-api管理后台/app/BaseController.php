@@ -7,6 +7,7 @@ use think\App;
 use think\exception\ValidateException;
 use think\Validate;
 
+
 /**
  * 控制器基础类
  */
@@ -45,6 +46,8 @@ abstract class BaseController
     {
         $this->app     = $app;
         $this->request = $this->app->request;
+
+        
 
         // 控制器初始化
         $this->initialize();

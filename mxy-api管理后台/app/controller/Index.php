@@ -47,11 +47,12 @@ class Index
             $sj=$v[$i]['sj'];//返回数据
             $zt=$v[$i]['zt'];//返回api状态
             
+            
             if ($zt == "zc"){
                 echo'<!--分割--><div class="col-sm-4"> <a target="_orange" class="block block-link-hover2 ribbon ribbon-modern ribbon-success" href="/index/ss?id='.($i+1).'"> <div class="ribbon-box font-w600">接口正常</div><div class="block-content"> <div class="h4 push-5">'.$name.'</div> <p class="text-muted">'.$gg.'</p> </div></a></div> <!--分割-->';
             }
             else{
-                echo'<!--分割--><div class="col-sm-4"> <a  class="block block-link-hover2 ribbon ribbon-modern ribbon-success" href=""> <div class="ribbon-box2 font-w600">接口异常</div><div class="block-content"> <div class="h4 push-5">'.$name.'</div> <p class="text-muted">'.$zt.'</p> </div></a></div> <!--分割-->';
+                echo'<!--分割--><div class="col-sm-4"> <a  class="block block-link-hover2 ribbon ribbon-modern ribbon-success" href=""> <div class="ribbon-box2 font-w600">接口异常</div><div class="block-content"> <div class="h4 push-5">'.$name.'</div> <p class="text-muted">接口暂停访问</p> </div></a></div> <!--分割-->';
             }
             
         }}
@@ -60,16 +61,18 @@ class Index
 
     public function ss(){
         $id = $_GET['id'];
-        include('key.php');
+        $data = file_get_contents("key.json");//读取站点信息
+        $data = json_decode($data,True);
+        $url = $data['url'];
         $str=file_get_contents("jiekoushuju.json");
         $str = json_decode($str,True);
         $v = $str['data'];
         $i=$id-1;
         $name=$v[$i]['name'];//名称
-        $dz="https://".$key."".$v[$i]['dz']."";//提交地址
+        $dz=$url.$v[$i]['dz'];//提交地址
         $cs=$v[$i]['cs'];//参数
         $gg=$v[$i]['gg'];//公告
-        $sl="https://".$key."".$v[$i]['sl']."";//示例
+        $sl=$url.$v[$i]['sl'];//示例
         $sj=$v[$i]['sj'];//返回数据
         $way=$v[$i]['way'];//返回请求方式
         
@@ -82,7 +85,42 @@ class Index
         View::assign('way',$way);
         return view::fetch();
     }
- 
+    
+    public function set()//前台信息设置页面
+    {   
+         return view::fetch();
+    }
+
+    public function webmsg(){//获取web信息
+        //用来获取api数据
+        $data = file_get_contents("key.json");
+        $data = json_decode($data,True);
+        $url = $data['url'];
+        $qq = $data['qq'];
+        $webname = $data['webname'];
+        $gg = $data['gg'];
+        $m = array("code"=>200,"msg"=>"成功","data"=>array("url"=>$url,"qq"=>$qq,"webname"=>$webname,"gg"=>$gg));
+        $m = json_encode($m,JSON_UNESCAPED_UNICODE);
+        exit($m);
+    }
+
+    public function homeedit(){
+        $name = $_POST['webname'];
+        $qq = $_POST['qq'];
+        $url = $_POST['weburl'];
+        $gg = $_POST['gg'];
+        $data = file_get_contents("key.json");
+        $data = json_decode($data,True);
+        $data['webname'] = $name;
+        $data['qq'] = $qq;
+        $data['url'] = $url;
+        $data['gg'] = $gg;
+        $data = json_encode($data,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
+        file_put_contents("key.json",$data);
+        $m = array("code"=>200,"msg"=>"成功","d"=>$name);
+        $m = json_encode($m,JSON_UNESCAPED_UNICODE);
+        exit($m);
+    }
 
 
 }

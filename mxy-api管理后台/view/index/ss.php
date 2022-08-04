@@ -20,7 +20,7 @@ h3:hover {box-shadow:0px 0px 8px #D1D1D1;}
 <h3 style="-webkit-transition: all .2s cubic-bezier(0, 0, 0, 0.48);-moz-transition: all .2s ease;border:.0625rem solid #fafafa;background:#fafafa repeating-linear-gradient(-45deg,#fff,#fff 1.125rem,transparent 1.125rem,transparent 2.25rem);margin:15px 0px;padding:20px;border-radius:5px;font-size:14px;color:#333;">
 {$name}API请求方式
 <ul>
-<li></li>
+<li>{$way}</li>
 </ul>
 <hr>
 请求地址：{$dz}<br/>

@@ -94,6 +94,7 @@ class Adminapi extends Base
         $apics = $_POST['api-cs'];//获取api参数
         $apisl = $_POST['api-sl'];//获取api示例
         $apisj = $_POST['api-sj'];//获取api返回数据
+        $apizt = $_POST['api-zt'];//获取api状态
 
 
         $data[$num]['name'] = $apiname;//添加api名称
@@ -102,7 +103,7 @@ class Adminapi extends Base
         $data[$num]['gg'] = $apigg;
         $data[$num]['sl'] = $apisl;
         $data[$num]['sj'] = $apisj;
-        $data[$num]['zt'] = 'zc';
+        $data[$num]['zt'] = $apizt;
         $data[$num]['way'] = 'GET';
 
         $data1['data'] = $data;

@@ -1,4 +1,5 @@
-[{
+[
+	{
 		"id": 1,
 		"title": "工作空间",
 		"icon": "layui-icon layui-icon-console",
@@ -12,19 +13,34 @@
 			"openType": "_iframe",
 			"href": "view/console/home.php"
 		},{
-			"id": 3,
+			"id": 2,
 			"title": "API前台预览",
 			"icon": "layui-icon layui-icon-console",
 			"type": 1,
 			"openType": "_iframe",
 			"href": "../"
 		},{
-			"id": 2,
+			"id": 3,
 			"title": "API信息管理",
 			"icon": "layui-icon layui-icon-console",
 			"type": 1,
 			"openType": "_iframe",
 			"href": "/viewer/apimsg"
+		}]
+		
+	},{
+		"id": 2,
+		"title": "前台管理",
+		"icon": "layui-icon layui-icon-template-1",
+		"type": 0,
+		"href": "",
+		"children": [{
+			"id": 4,
+			"title": "信息管理",
+			"icon": "layui-icon layui-icon-template-1",
+			"type": 1,
+			"openType": "_iframe",
+			"href": "/index/set"
 		}]
 	}
 ]

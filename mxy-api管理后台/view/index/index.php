@@ -1,16 +1,14 @@
 <?php
 include("./asd/a.php");
-include("./key.php")
 ?>
 <!doctype html>
 <!-- 我知道你喜欢扒站但是我承受不住 -->
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
-<title>萌新源API - 免费提供API服务</title>
+<title id="title">萌新源API - 免费提供API服务</title>
 <meta name="viewport"content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>萌新源API - 提供免费接口调用平台</title>
 <meta name="description" content="萌新源API是萌新源免费提供API数据接口调用服务平台 - 我们致力于为用户提供稳定、快速的免费API数据接口服务。">
 <meta name="keywords" content="API,聚合数据,API数据接口,API,免费接口,免费api接口调用,免费API数据调用,萌新源API,萌新源API">
 <meta name="author" content="萌新源">
@@ -34,7 +32,7 @@ include("./key.php")
 <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=RctrqqLrcRrcV4PZnNwnsN_eR2hmGsQd&noverify=0">反馈</a>
 </nav>
 <div class="box-text">
-<h1>萌新源API</h1>
+<h1 id="homeh">萌新源API</h1>
 
 
 <p>稳定、快速、免费的 API 接口服务<span class="package-amount">共收录了 <strong>{$number}</strong>个接口</span> 
@@ -77,10 +75,10 @@ include("./key.php")
 </style>
 <div style="background-color:#333;border-radius:25px;box-shadow:0px 0px 5px #f200ff;padding:5px;margin-top:10px;margin-bottom:0px;">
 <marquee>
-<b id="nr">萌新源API是萌新源免费提供API数据接口调用服务平台,各位不要攻击本站呦！</b> </marquee>
+<b id="gg" name="gg">萌新源API是萌新源免费提供API数据接口调用服务平台,各位不要攻击本站呦！</b> </marquee>
 </div>
-<center><span> 本站网址:{$key}</span>
-<font color="red"></font><br/>
+<center><span> 本站网址:</span>
+<font color="red" id="url"></font><br/>
 </center>
 
 当前时间：<span id="localtime"></span><script type="text/javascript">function showLocale(objD)
@@ -126,7 +124,7 @@ tick();</script>
   <div class="block block-link-hover2 ribbon ribbon-modern ribbon-success">
 <div class="block-content">
   <a class="block" href="">
-<p class="text-center">本网站只提供接口服务，造成的一切后果与本网站无关!如果本站发布的内容侵犯你的利益，请联系我。发送至我的邮箱<?php echo $qq;?>@qq.com</p>
+<p class="text-center" id="qq">本网站只提供接口服务，造成的一切后果与本网站无关!如果本站发布的内容侵犯你的利益，请联系我。发送至我的邮箱</p>
 <p class="text-center"><span id="runtime_span"></span>
 <script type="text/javascript">function show_runtime(){window.setTimeout("show_runtime()",1000);X=new 
 Date("06/10/2022 00:00:00");
@@ -393,6 +391,14 @@ runtime_span.innerHTML="本站稳定运行: "+A+"天"+B+"小时"+C+"分"+D+"秒"
 		$.get("/index/apidata",function(data){
 			$("#listApi").prepend(data);//渲染api列表
 		})
+		$.get("index/webmsg",function(res){
+			var qq = $("body").find("#qq").text();
+			console.log(qq);
+			$("body").find("#homeh").text(res.data.webname);
+			$("body").find("#gg").text(res.data.gg);
+			$("body").find("#url").text(res.data.url);
+			$("body").find("#qq").text(qq+res.data.qq+"@qq.com");
+		},"json")
 		
 	})
 </script>

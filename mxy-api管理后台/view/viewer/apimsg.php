@@ -52,6 +52,15 @@ file_put_contents("admin/data/apidata.json",$json_data);
  
 <script src="/layui/layui.js"></script>
 <script>
+function setpage(){
+  var width = window.innerWidth;
+  if(width>600){
+    return ['50%','90%']
+  }else{
+    return ['90%','90%']
+  }
+}
+
 layui.use(['table','layer','form'],function(){
   var table = layui.table;
   var $ = layui.jquery;
@@ -80,13 +89,14 @@ layui.use(['table','layer','form'],function(){
       })
     }
     else if(obj.event=='edit'){
+      
       //编辑
       console.log("编辑");
       layer.open({
       type:2,
       title:'修改API信息',
       content:'/viewer/editapi',
-      area: ['350px','500px'],
+      area: setpage(),
       end:function(){
         //表格数据刷新
         table.reload('tableID');
@@ -101,6 +111,21 @@ layui.use(['table','layer','form'],function(){
         body.find("#api-sl").val(obj.data.sl);//回显
         body.find("#api-sj").val(obj.data.sj);//回显
         body.find("input[name='id']").attr({'value':obj.data.id});
+        body.find("#type").val(obj.data.zt);//回显
+        if(obj.data.zt=="zc"){
+          var str;
+          console.log('yes')
+          str = "<option value=\"zc\" selected>正常</option>"
+          str += "<option value=\"yc\" >异常</option>"
+          body.find("#api-zt").html(str)
+          form.render('select');
+        }else{
+          console.log('no')
+          str = "<option value=\"zc\">正常</option>"
+          str += "<option value=\"yc\" selected>异常</option>"
+          body.find("#api-zt").html(str)
+          form.render('select');
+        }
       }
     });
     }
@@ -108,6 +133,7 @@ layui.use(['table','layer','form'],function(){
       console.log("不存在的操作");
     }
   });
+
 
   //给添加API按钮绑定事件
   $("#add-api").click(function(){
@@ -157,7 +183,6 @@ layui.use(['table','layer','form'],function(){
         title: '状态', 
         width: 70,
         templet: function(d){
-          console.log(d);
           return d.zt=="zc"?'正常':'异常';
         }
       }

@@ -5,10 +5,11 @@
         <title>layui初始化</title>
         <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
     </head>
-    <body>
+    <body stytle="text-align: center">
         <div class="layui-container" style="margin-top: 30px;">
             <div class="layui-row">
                 <form class="layui-form" action="">
+                  <input type="hidden" id="type" name="type">
                   <div class="layui-form-item">
                     <label class="layui-form-label">API id</label>
                     <div class="layui-input-block">
@@ -19,6 +20,16 @@
                       <label class="layui-form-label">API名称</label>
                       <div class="layui-input-block">
                         <input type="text" id="api-name" name="api-name" required  lay-verify="required" placeholder="请输入API名称" autocomplete="off" class="layui-input">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">API状态</label>
+                      <div class="layui-input-block">
+                      <select id="api-zt" name="api-zt" lay-verify="">
+                      <option value="">请选择API状态</option>
+                      <option value="zc">正常</option>
+                      <option value="yc">异常</option>
+                    </select>
                       </div>
                     </div>
                     <div class="layui-form-item">
@@ -53,7 +64,7 @@
                     </div>
                     <div class="layui-form-item">
                       <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit lay-filter="formupdate">立即修改</button>
+                        <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="formupdate">立即修改</button>
                       </div>
                     </div>
                   </form>
@@ -62,6 +73,7 @@
 
         <script src="../../layui/layui.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
+
             layui.use('form', function(){
                 var $ = layui.jquery;
                 var form = layui.form;
@@ -71,7 +83,6 @@
                     //AJAX请求
                     $.post("/adminapi/editapi",res.field,function(d){
                         console.log(d);
-                        console.log();
                         if(d.code!=200){
                           layer.msg(d.msg);
                         }
@@ -83,6 +94,7 @@
 
                     return false;
                 });
+                
             })
         </script>
     </body>

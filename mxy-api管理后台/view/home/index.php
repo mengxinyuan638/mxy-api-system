@@ -75,7 +75,7 @@
 				</span>
 				<span class="center"></span>
 				<span class="right">
-					Copyright © 2021-2022 pearadmin.com
+					Copyright © 2021-2022 萌新源API管理系统
 				</span>
 			</div>
 			<!-- 遮 盖 层 -->
@@ -104,7 +104,7 @@
 				admin.setConfigType("yml");
 				admin.setConfigPath("/config/pear.config.yml");
 				admin.render();
-				layer.alert('欢迎使用萌新源API管理系统V1.0', {icon: 6});
+				layer.alert('欢迎使用萌新源API管理系统V2.0Beta', {icon: 6});
 				
 				// 登出逻辑 
 				admin.logout(function(){
