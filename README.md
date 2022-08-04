@@ -1,4 +1,4 @@
-# 萌新源API+API管理后台v1.0beta
+# 萌新源API+API管理后台v2.0beta
 
 #### 介绍
 前端基于layui以及pear-Admin-layui
