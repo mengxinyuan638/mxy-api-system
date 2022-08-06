@@ -99,7 +99,7 @@ layui.use(['table','layer','form'],function(){
       area: setpage(),
       end:function(){
         //表格数据刷新
-        table.reload('tableID');
+        table.reload('tableID','url');
       },
       success:function(layero, index){
         //数据回显

@@ -10,12 +10,13 @@ use think\facade\Cookie;
 
 
 class Fix{
-    public function __construct(){   
-        $admin_id = Cookie::get('admin_name');
-        if(empty($admin_id)){
-            header('location:/Mxyadmin/index');
+    public function __construct(){
+        $data = file_get_contents("webtype.json");
+        $data = json_decode($data,True);
+        $type = $data['type'];
+        if($type=='true'){
+            header('location:/Webfix/index');
             exit;
         }
-
     }
 }

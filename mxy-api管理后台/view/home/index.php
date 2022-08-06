@@ -101,15 +101,20 @@
 				var popup = layui.popup;
 				var layer = layui.layer
 				
+
 				admin.setConfigType("yml");
 				admin.setConfigPath("/config/pear.config.yml");
 				admin.render();
 				layer.alert('欢迎使用萌新源API管理系统V2.0Beta', {icon: 6});
+
+				
 				
 				// 登出逻辑 
 				admin.logout(function(){
 					popup.success("注销成功",function(){
-						location.href = "login.html";
+						//AJAX
+						$.get("/Home/logout");
+						location.href = "/Mxyadmin/index";
 					})
 					// 注销逻辑 返回 true / false
 					return true;

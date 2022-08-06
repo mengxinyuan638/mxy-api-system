@@ -113,4 +113,20 @@ class Adminapi extends Base
         $m = array("code"=>200,"msg"=>"成功","id"=>$num);
         exit(json_encode($m,JSON_UNESCAPED_UNICODE));
     }
+    public function webtype(){
+        $type = $_POST['type'];
+        $data = file_get_contents("webtype.json");
+        $data = json_decode($data,True);
+        $data['type'] = $type;
+        $data = json_encode($data,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
+        file_put_contents("webtype.json",$data);
+        $data2 = file_get_contents("key.json");
+        $data2 = json_decode($data2,True);
+        $data2['type'] = $type;
+        $data2 = json_encode($data2,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
+        file_put_contents("key.json",$data2);
+
+        $m = array("code"=>200,"msg"=>"成功");
+        exit(json_encode($m,JSON_UNESCAPED_UNICODE));
+    }
 }

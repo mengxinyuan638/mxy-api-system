@@ -16,4 +16,7 @@ class Home extends Base
     {
         return view::fetch();
     }
+    public function logout(){
+        Cookie::delete('admin_name');
+    }
 }
