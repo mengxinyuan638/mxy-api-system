@@ -391,13 +391,19 @@ runtime_span.innerHTML="本站稳定运行: "+A+"天"+B+"小时"+C+"分"+D+"秒"
 		$.get("/index/apidata",function(data){
 			$("#listApi").prepend(data);//渲染api列表
 		})
-		$.get("index/webmsg",function(res){
+		$.get("indexcontr/webmsg",function(res){
 			var qq = $("body").find("#qq").text();
 			console.log(qq);
 			$("body").find("#homeh").text(res.data.webname);
 			$("body").find("#gg").text(res.data.gg);
 			$("body").find("#url").text(res.data.url);
 			$("body").find("#qq").text(qq+res.data.qq+"@qq.com");
+			if(res.data.tctype=="true"){
+				layer.alert(res.data.tcgg,{
+				title: ['公告', 'font-size:18px;'],
+				anim: 4
+				});
+			}
 		},"json")
 		
 	})

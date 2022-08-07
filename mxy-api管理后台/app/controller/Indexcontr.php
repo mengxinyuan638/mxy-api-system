@@ -21,8 +21,10 @@ class Indexcontr extends Base{
         $qq = $data['qq'];
         $webname = $data['webname'];
         $gg = $data['gg'];
+        $tcgg = $data['tcgg'];
         $type = $data['type'];
-        $m = array("code"=>200,"msg"=>"成功","data"=>array("url"=>$url,"qq"=>$qq,"webname"=>$webname,"gg"=>$gg,"type"=>$type));
+        $tctype = $data['tctype'];
+        $m = array("code"=>200,"msg"=>"成功","data"=>array("url"=>$url,"qq"=>$qq,"webname"=>$webname,"gg"=>$gg,"tcgg"=>$tcgg,"type"=>$type,"tctype"=>$tctype));
         $m = json_encode($m,JSON_UNESCAPED_UNICODE);
         exit($m);
     }
@@ -32,12 +34,14 @@ class Indexcontr extends Base{
         $qq = $_POST['qq'];
         $url = $_POST['weburl'];
         $gg = $_POST['gg'];
+        $tcgg = $_POST['tcgg'];
         $data = file_get_contents("key.json");
         $data = json_decode($data,True);
         $data['webname'] = $name;
         $data['qq'] = $qq;
         $data['url'] = $url;
         $data['gg'] = $gg;
+        $data['tcgg'] = $tcgg;
         $data = json_encode($data,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
         file_put_contents("key.json",$data);
         $m = array("code"=>200,"msg"=>"成功","d"=>$name);

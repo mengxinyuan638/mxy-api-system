@@ -129,4 +129,20 @@ class Adminapi extends Base
         $m = array("code"=>200,"msg"=>"成功");
         exit(json_encode($m,JSON_UNESCAPED_UNICODE));
     }
+    public function tctype(){
+        $type = $_POST['tctype'];
+        $data = file_get_contents("tctype.json");
+        $data = json_decode($data,True);
+        $data['type'] = $type;
+        $data = json_encode($data,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
+        file_put_contents("tctype.json",$data);
+        $data2 = file_get_contents("key.json");
+        $data2 = json_decode($data2,True);
+        $data2['tctype'] = $type;
+        $data2 = json_encode($data2,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
+        file_put_contents("key.json",$data2);
+
+        $m = array("code"=>200,"msg"=>"成功");
+        exit(json_encode($m,JSON_UNESCAPED_UNICODE));
+    }
 }
