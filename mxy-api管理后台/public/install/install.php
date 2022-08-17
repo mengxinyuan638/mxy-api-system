@@ -111,7 +111,6 @@
                         if(con_msg.code==200){
                             //发送请求
                             $.post("./creat.php",{ way: "creat" },function(crt_msg){
-                                console.log("1");
                                 if(crt_msg.code==200){
                                     $("#ts").text(crt_msg.msg);
                                     element.progress('demo', '75%');//设置进度条进度
