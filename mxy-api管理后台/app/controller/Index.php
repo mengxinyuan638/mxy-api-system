@@ -85,6 +85,66 @@ class Index extends Fix
         View::assign('way',$way);
         return view::fetch();
     }
+
+    public function linkdata(){
+        $data = file_get_contents("link.json");
+        $data = json_decode($data,True);
+        $v = $data['data'];
+        $num = count($data['data']);
+
+        if($num== 0){
+            echo "";
+            }else{
+            for( $i = 0 ; $i < $num && $i < $num ; $i ++ ){
+            $name=$v[$i]['name'];//名称
+            $url=$v[$i]['url'];//提交地址
+            $web=$v[$i]['web'];
+
+            
+            echo '<a href="'.$url.'" target="_blank"><div class="item1"> <div class="avatar"> <img src="/favicon.ico"> </div> <div class="inner"> <h5><font color="black">'.$name.'</font></h5><p><font color="red">介绍:'.$web.'</font></p> </div> </div></a>';
+            }
+        }
+
+    }
+
+
+    public function webmsg(){//获取web信息
+        //用来获取api数据
+        $data = file_get_contents("key.json");
+        $data = json_decode($data,True);
+        $url = $data['url'];
+        $qq = $data['qq'];
+        $webname = $data['webname'];
+        $gg = $data['gg'];
+        $tcgg = $data['tcgg'];
+        $type = $data['type'];
+        $tctype = $data['tctype'];
+        $m = array("code"=>200,"msg"=>"成功","data"=>array("url"=>$url,"qq"=>$qq,"webname"=>$webname,"gg"=>$gg,"tcgg"=>$tcgg,"type"=>$type,"tctype"=>$tctype));
+        $m = json_encode($m,JSON_UNESCAPED_UNICODE);
+        exit($m);
+    }
+
+    public function webtype(){
+        $type = $_POST['type'];
+        $data = file_get_contents("webtype.json");
+        $data = json_decode($data,True);
+        $data['type'] = $type;
+        $data = json_encode($data,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
+        file_put_contents("webtype.json",$data);
+        $data2 = file_get_contents("key.json");
+        $data2 = json_decode($data2,True);
+        $data2['type'] = $type;
+        $data2 = json_encode($data2,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
+        file_put_contents("key.json",$data2);
+
+        $m = array("code"=>200,"msg"=>"成功");
+        exit(json_encode($m,JSON_UNESCAPED_UNICODE));
+    }
+
+    public function css(){
+        
+    }
+    
     
     
 }

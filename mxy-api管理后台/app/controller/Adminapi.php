@@ -145,4 +145,87 @@ class Adminapi extends Base
         $m = array("code"=>200,"msg"=>"成功");
         exit(json_encode($m,JSON_UNESCAPED_UNICODE));
     }
+
+    public function dellink(){
+        $key = $_GET['id'];
+        $key = $key-1;
+        $data = file_get_contents("link.json");
+        $data1 = json_decode($data,True);
+        $data = $data1['data'];
+        $keys = array_keys($data);
+        $index = array_search($key, $keys);
+        array_splice($data, $index, 1);
+        $num = count($data);
+
+        for($i = $key; $i<$num;$i++){
+            $id = $data[$i]['id'];
+            $data[$i]['id'] = $id-1;
+        }
+        $data1['data'] = $data;
+        $data = json_encode($data1,JSON_UNESCAPED_UNICODE);
+        file_put_contents("link.json",$data);
+
+        $m = array("code"=>200,"msg"=>"成功");
+        exit(json_encode($m,JSON_UNESCAPED_UNICODE));
+    }
+    public function addlink(){
+        $data = file_get_contents("link.json");
+        $data1 = json_decode($data,True);
+        $data = $data1['data'];
+        $num = count($data);
+        $number = $num+1;
+        for($i = 0; $i<$num ; $i++){
+            $name = $data[$i]['name'];
+            $url = $data[$i]['url'];
+            $web = $data[$i]['web'];
+            
+    
+            $data[$i]['name'] = $name;
+            $data[$i]['url'] = $url;
+            $data[$i]['web'] = $web;
+    
+        }
+        //获取AJAX请求数据
+        $linkname = $_POST['linkname'];//获取名称
+        $linkurl = $_POST['linkurl'];//获取地址
+        $web = $_POST['web'];//获取简介
+    
+        $data[$num]['id'] = $num+1;
+        $data[$num]['name'] = $linkname;//添加api名称
+        $data[$num]['url'] = $linkurl;
+        $data[$num]['web'] = $web;
+    
+        $data1['data'] = $data;
+        $data1['count'] = $number;
+        $data = json_encode($data1,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
+        file_put_contents("link.json",$data);
+    
+        $m = array("code"=>200,"msg"=>"成功");
+        exit(json_encode($m,JSON_UNESCAPED_UNICODE));
+    }
+    public function editlink(){
+        $data = file_get_contents("link.json");
+        $data1 = json_decode($data,True);
+        $data = $data1['data'];
+
+
+        //获取AJAX请求数据
+        $num = $_POST['id'];
+        $num = $num-1;
+        $linkname = $_POST['linkname'];//获取api名称
+        $linkurl = $_POST['linkurl'];//获取api地址
+        $web = $_POST['web'];//获取简介
+
+
+        $data[$num]['name'] = $linkname;//添加api名称
+        $data[$num]['url'] = $linkurl;
+        $data[$num]['web'] = $web;
+
+        $data1['data'] = $data;
+        $data = json_encode($data1,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
+        file_put_contents("link.json",$data);
+
+        $m = array("code"=>200,"msg"=>"成功","id"=>$num);
+        exit(json_encode($m,JSON_UNESCAPED_UNICODE));
+    }
 }

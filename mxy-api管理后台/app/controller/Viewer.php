@@ -25,4 +25,13 @@ class Viewer extends Base
     {   
         return view::fetch();
     }
+
+    public function addlink()
+    {   
+        return view::fetch();
+    }
+    public function editlink()
+    {   
+        return view::fetch();
+    }
 }

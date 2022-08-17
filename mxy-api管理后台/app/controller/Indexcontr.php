@@ -10,7 +10,12 @@ use think\facade\View;
 class Indexcontr extends Base{
     public function set()//前台信息设置页面
     {   
-         return view::fetch();
+        return view::fetch();
+    }
+
+    public function linkset()//前台信息设置页面
+    {   
+        return view::fetch();
     }
 
     public function webmsg(){//获取web信息
@@ -48,4 +53,6 @@ class Indexcontr extends Base{
         $m = json_encode($m,JSON_UNESCAPED_UNICODE);
         exit($m);
     }
+
+    
 }

@@ -1,7 +1,6 @@
 <?php
 
 
-
 return [
     // 默认使用的数据库连接配置
     'default'         => env('database.driver', 'mysql'),
@@ -28,11 +27,11 @@ return [
             // 服务器地址
             'hostname'        => env('database.hostname', 'localhost'),
             // 数据库名
-            'database'        => env('database.database', 'null'),
+            'database'        => env('database.database', 'backdb'),
             // 用户名
-            'username'        => env('database.username', 'root'),
+            'username'        => env('database.username', $data['username']),
             // 密码
-            'password'        => env('database.password', 'root'),
+            'password'        => env('database.password', $psw),
             // 端口
             'hostport'        => env('database.hostport', '3306'),
             // 数据库连接参数

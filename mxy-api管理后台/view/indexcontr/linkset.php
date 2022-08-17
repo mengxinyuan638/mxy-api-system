@@ -2,16 +2,16 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>API信息管理</title>
+  <title>友链信息管理</title>
   <link rel="stylesheet" href="/layui/css/layui.css" media="all">
 </head>
 <?php //用来获取api数据
-$data = file_get_contents("jiekoushuju.json");
-$result = preg_match_all('/{"id":(.*?),"name":"(.*?)","dz":"(.*?)","cs":"(.*?)","gg":"(.*?)","sl":"(.*?)","sj":"(.*?)","zt":"(.*?)","way":"(.*?)"}/',$data,$v);
+$data = file_get_contents("link.json");
+$result = preg_match_all('/{"id":(.*?),"name":"(.*?)","url":"(.*?)"}/',$data,$v);
 $data2 = json_decode($data,true);// 把JSON字符串转成PHP数组
 $data1 = $data2['data'];
 $kkk = json_encode($data1);//将data1转换成json
-$nummber = preg_match_all('/{"id":(.*?),"apiname":"(.*?)","gonggao":"(.*?)","url":"(.*?)","zt":"(.*?)"}/',$kkk,$l);
+$nummber = preg_match_all('/{"id":(.*?),"name":"(.*?)","url":"(.*?)"}/',$kkk,$l);
 ?>
 <?php
 if($result== 0){
@@ -19,34 +19,15 @@ echo "";
 }else{
 for( $i = 0 ; $i < $result && $i < $result ; $i ++ ){
 $name=$v[1][$i];//名称
-$dz=$v[2][$i];//提交地址
-$cs=$v[3][$i];//参数
-$gg=$v[4][$i];//返回公告
-$sl=$v[5][$i];//示例
-$sj=$v[6][$i];//返回数据
-$zt=$v[7][$i];//返回api状态
-if ($zt == "zc"){
-    $zt3 = '正常';
+$dz=$v[2][$i];//地址
 }
-else{
-	
 }
-$data1[$i]['id'] = $i;
-$data1[$i]['apiname'] = urlencode($name);
-$data1[$i]['gonggao'] = urlencode($gg);
-$data1[$i]['url'] = $dz;
-$data1[$i]['zt'] = urlencode('正常');
-$data2['data'] = $data1;
-$json_data = json_encode($data2);
-$json_data = urldecode($json_data);
-file_put_contents("admin/data/apidata.json",$json_data);
-}}
 ?>
 <body>
 
 <div class="layui-container">
   <table id="demo" lay-filter="test" ></table>
-  <button id="add-api" type="button" class="layui-btn layui-btn-fluid layui-btn-lg layui-btn-normal">添加API信息</button>
+  <button id="add-api" type="button" class="layui-btn layui-btn-fluid layui-btn-lg layui-btn-normal">添加友链信息</button>
 </div>
 
  
@@ -73,7 +54,7 @@ layui.use(['table','layer','form'],function(){
       //删除
       layer.confirm("是否删除？", {icon: 3, title:'提示'},function(index){
         //点击确定后发送AJAX请求
-        $.getJSON("/adminapi/delapi",{id:obj.data.id},function(d){
+        $.getJSON("/adminapi/dellink",{id:obj.data.id},function(d){
           if(d.code!=200){
             layer.msg(d.msg);
           }
@@ -95,7 +76,7 @@ layui.use(['table','layer','form'],function(){
       layer.open({
       type:2,
       title:'修改API信息',
-      content:'/viewer/editapi',
+      content:'/viewer/editlink',
       area: setpage(),
       end:function(){
         //表格数据刷新
@@ -104,28 +85,10 @@ layui.use(['table','layer','form'],function(){
       success:function(layero, index){
         //数据回显
         var body = layer.getChildFrame('body', index);
-        body.find("#api-name").val(obj.data.name);//回显名称
-        body.find("#api-gg").val(obj.data.gg);//回显
-        body.find("#api-dz").val(obj.data.dz);//回显
-        body.find("#api-cs").val(obj.data.cs);//回显
-        body.find("#api-sl").val(obj.data.sl);//回显
-        body.find("#api-sj").val(obj.data.sj);//回显
+        body.find("#linkname").val(obj.data.name);//回显名称
+        body.find("#linkurl").val(obj.data.url);//回显
+        body.find("#web").val(obj.data.web);//回显
         body.find("input[name='id']").attr({'value':obj.data.id});
-        body.find("#type").val(obj.data.zt);//回显
-        if(obj.data.zt=="zc"){
-          var str;
-          console.log('yes')
-          str = "<option value=\"zc\" selected>正常</option>"
-          str += "<option value=\"yc\" >异常</option>"
-          body.find("#api-zt").html(str)
-          form.render('select');
-        }else{
-          console.log('no')
-          str = "<option value=\"zc\">正常</option>"
-          str += "<option value=\"yc\" selected>异常</option>"
-          body.find("#api-zt").html(str)
-          form.render('select');
-        }
       }
     });
     }
@@ -141,7 +104,7 @@ layui.use(['table','layer','form'],function(){
     layer.open({
       type:2,
       title:'添加API信息',
-      content:'/viewer/addapi',
+      content:'/viewer/addlink',
       area: setpage(),
       end:function(){
         //表格数据刷新
@@ -155,7 +118,7 @@ layui.use(['table','layer','form'],function(){
   //第一个实例
   table.render({
     elem: '#demo'
-    ,url: '/jiekoushuju.json' //数据接口
+    ,url: '/link.json' //数据接口
     ,id:'tableID'
     ,page: true //开启分页
     ,limit: 10
@@ -169,22 +132,15 @@ layui.use(['table','layer','form'],function(){
       }
       ,{
         field: 'name', 
-        title: 'API接口名称'
+        title: '友链名称'
       }
       ,{
-        field: 'gg', 
-        title: 'API公告'
+        field: 'url', 
+        title: '友链名称地址'
       }
       ,{
-        field: 'dz', 
-        title: 'API地址'
-      } 
-      ,{
-        title: '状态', 
-        width: 70,
-        templet: function(d){
-          return d.zt=="zc"?'正常':'异常';
-        }
+        field: 'web', 
+        title: '网站简介'
       }
       ,{
         title:'操作',

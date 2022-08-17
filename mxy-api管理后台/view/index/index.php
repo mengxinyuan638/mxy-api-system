@@ -330,33 +330,8 @@ runtime_span.innerHTML="本站稳定运行: "+A+"天"+B+"小时"+C+"分"+D+"秒"
 <div class="gate ch"> 
 <div class="container links"> 
 <h2 class="chtitle"><center><b id="nr">友情<span>链接</span></b></center></h2> 
-<div class="clear">
+<div class="clear" id="yqlj">
 
-
-
-
-
-<a href="https://bc.juncikeji.xyz" target="_blank">
-<div class="item1"> 
-<div class="avatar"> 
-<img src="https://bc.juncikeji.xyz/wp-content/uploads/2022/05/20220514_211248_0000.png"> 
-</div> 
-<div class="inner"> 
-<h5><font color="black">DT编程社</font></h5>
-<p><font color="red">介绍:高中编程爱好者社团</font></p> 
-</div> 
-</div></a>
-
-<a href onclick="return alert('友链申请说明\n网站名:萌新源API\n网站图:/images/favicon.png\n网址:\n介绍:萌新源API\nQQ:\n这是例子，请把你申请友链内容发送到@qq.com\n一定把我网站写到你的友链表上，否则不给你添加');" target="_blank">
-<div class="item1"> 
-<div class="avatar"> 
-<img src="images/favicon.png"> 
-</div> 
-<div class="inner"> 
-<h5><font color="black">申请友情</font></h5>
-<p><font color="red">介绍:申请友情</font></p> 
-</div> 
-</div></a>
 
 <div class="gate ch"> 
 <div class="container links"> 
@@ -391,7 +366,10 @@ runtime_span.innerHTML="本站稳定运行: "+A+"天"+B+"小时"+C+"分"+D+"秒"
 		$.get("/index/apidata",function(data){
 			$("#listApi").prepend(data);//渲染api列表
 		})
-		$.get("indexcontr/webmsg",function(res){
+		$.get("/index/linkdata",function(data2){
+			$("#yqlj").html(data2);
+		})
+		$.get("index/webmsg",function(res){
 			var qq = $("body").find("#qq").text();
 			console.log(qq);
 			$("body").find("#homeh").text(res.data.webname);

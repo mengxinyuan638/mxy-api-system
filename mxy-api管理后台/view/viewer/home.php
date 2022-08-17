@@ -182,10 +182,13 @@ $aa = intval(file_get_contents("asd/jishu.dat"));//读取访问量
 				</div>
 				<div class="layui-col-md3">
 					<div class="layui-card">
-						<div class="layui-card-header">更 新</div>
+						<div class="layui-card-header">更 新 日 志</div>
 						<div class="layui-card-body">
 							<ul class="list">
-								<li class="list-item"><span class="title">暂时没有更新</span><span class="footer">2022-7-21</span></li>
+								<li class="list-item"><span class="title">v2.2版本发布</span><span class="footer">2022-8-7</span></li>
+								<li class="list-item"><span class="title">v2.1版本发布</span><span class="footer">2022-8-6</span></li>
+								<li class="list-item"><span class="title">v2.0版本发布</span><span class="footer">2022-8-4</span></li>
+								<li class="list-item"><span class="title">v1.0版本发布</span><span class="footer">2022-8-1</span></li>
 							</ul>
 						</div>
 					</div>
