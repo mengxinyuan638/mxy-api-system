@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 $way = $_POST['way'];
 $data = file_get_contents("../../db_data/db_data.json");
 $data = json_decode($data,True);
@@ -43,30 +44,6 @@ if($way=='connect'){
         fclose($fp);
         $fp2=fopen($lockfile,'w');  
         fwrite($fp2,'安装效验文件');   
-        fclose($fp2);
-        //以下是生成env配置
-        $data = file_get_contents("../../db_data/db_data.json");
-        $data = json_decode($data,True);
-        $host = $data['host'];
-        $user = $data['user'];
-        $psw = $data['psw'];
-        $port = $data['port'];
-        $db_name = $data['db_name'];
-        $lockfile="../../.env";
-        $fp=fopen($config_file,"wb");  
-        fwrite($fp,$config_strings);  
-        fclose($fp);
-        $fp2=fopen($lockfile,'w');
-        $head = '[DATABASE]';
-        $type = 'TYPE = mysql';
-        $host = 'HOSTNAME = '.$host;
-        $e_db_name ='DATABASE = '.$db_name;
-        $e_user = 'USERNAME = '.$user;
-        $e_pasw = 'PASSWORD = '.$psw;
-        $e_port = 'HOSTPORT = 3306';
-        $utf = 'CHARSET = utf8';
-        $debug = 'DEBUG = true';
-        fwrite($fp2,$head."\r\n".$type."\r\n".$host."\r\n".$e_db_name."\r\n".$e_user."\r\n".$e_user."\r\n".$e_pasw."\r\n".$e_port."\r\n".$utf."\r\n".$debug);   
         fclose($fp2);
         $m = array("code"=>200,"msg"=>"用户创建成功");
         exit(json_encode($m,JSON_UNESCAPED_UNICODE)); 

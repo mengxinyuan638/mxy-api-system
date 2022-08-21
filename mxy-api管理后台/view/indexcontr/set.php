@@ -71,17 +71,60 @@ background-color: #f4f4f4;
     </div>
     </div>
 </div>
+<div class="layui-row layui-col-space15" style="margin-top:25px;">
+    <div class="layui-col-md4">
+      <div class="layui-card">
+        <div class="layui-card-header">网站图标</div>
+        <div class="layui-card-body" style="margin: 0 auto; text-align: center">
+        <div class="layui-upload">
+            <button type="button" class="layui-btn" id="icon">上传图片</button>
+            <div class="layui-upload-list">
+                <img class="layui-upload-img" id="iconp" style="width:300px;height:300px;">
+                <p id="demoText"></p>
+            </div>
+            <div style="width: 300px;margin: 0 auto; text-align: center">
+                <div class="layui-progress layui-progress-big" lay-showpercent="yes" lay-filter="demop">
+                <div class="layui-progress-bar" lay-percent=""></div>
+                </div>
+            </div>
+        </div> 
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-md8">
+      <div class="layui-card">
+        <div class="layui-card-header">首页背景</div>
+        <div class="layui-card-body" style="margin: 0 auto; text-align: center">
+        <div class="layui-upload">
+            <button type="button" class="layui-btn" id="upback">上传图片</button>
+            <div class="layui-upload-list">
+                <img class="layui-upload-img" id="back" style="width:534px;height:300px;">
+                <p id="demoText"></p>
+            </div>
+            <div style="width: 534px;margin: 0 auto; text-align: center">
+                <div class="layui-progress layui-progress-big" lay-showpercent="yes" lay-filter="demob">
+                <div class="layui-progress-bar" lay-percent=""></div>
+                </div>
+            </div>
+        </div> 
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
+
 
 <script src="../../layui/layui.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 //请求web信息
-layui.use('form', function(){
+layui.use(['form','upload','element'], function(){
     var $ = layui.jquery;
     var layer = layui.layer;
     var form = layui.form;
     var webtype;
+    var upload = layui.upload;
+    var element = layui.element;
     //维护按钮状态及弹窗按钮状态
     $.post("/indexcontr/webmsg",function(d){
         $("body").find("#webname").val(d.data.webname);
@@ -204,6 +247,81 @@ layui.use('form', function(){
             }
         },"json");
     })
+    //背景上传
+    var uploadInst = upload.render({
+    elem: '#icon'
+    ,url: 'https://httpbin.org/post' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        $('#iconp').attr('src', result); //图片链接（base64）
+      });
+      
+      element.progress('demop', '0%'); //进度条复位
+      layer.msg('上传中', {icon: 16, time: 0});
+    }
+    ,done: function(res){
+      //如果上传失败
+      if(res.code > 0){
+        return layer.msg('上传失败');
+      }
+      //上传成功的一些操作
+      //……
+      $('#demoText').html(''); //置空上传失败的状态
+    }
+    ,error: function(){
+      //演示失败状态，并实现重传
+      var demoText = $('#demoText');
+      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+      demoText.find('.demo-reload').on('click', function(){
+        uploadInst.upload();
+      });
+    }
+    //进度条
+    ,progress: function(n, elem, e){
+      element.progress('demop', n + '%'); //可配合 layui 进度条元素使用
+      if(n == 100){
+        layer.msg('上传完毕', {icon: 1});
+      }
+    }
+    });
+    var uploadInst = upload.render({
+    elem: '#upback'
+    ,url: 'https://httpbin.org/post' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        $('#back').attr('src', result); //图片链接（base64）
+      });
+      
+      element.progress('demob', '0%'); //进度条复位
+      layer.msg('上传中', {icon: 16, time: 0});
+    }
+    ,done: function(res){
+      //如果上传失败
+      if(res.code > 0){
+        return layer.msg('上传失败');
+      }
+      //上传成功的一些操作
+      //……
+      $('#demoText').html(''); //置空上传失败的状态
+    }
+    ,error: function(){
+      //演示失败状态，并实现重传
+      var demoText = $('#demoText');
+      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+      demoText.find('.demo-reload').on('click', function(){
+        uploadInst.upload();
+      });
+    }
+    //进度条
+    ,progress: function(n, elem, e){
+      element.progress('demob', n + '%'); //可配合 layui 进度条元素使用
+      if(n == 100){
+        layer.msg('上传完毕', {icon: 1});
+      }
+    }
+    });
 })
 </script>
 </body>

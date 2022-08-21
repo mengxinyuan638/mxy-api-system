@@ -372,6 +372,7 @@ runtime_span.innerHTML="本站稳定运行: "+A+"天"+B+"小时"+C+"分"+D+"秒"
 		$.get("index/webmsg",function(res){
 			var qq = $("body").find("#qq").text();
 			console.log(qq);
+			$("title").text(res.data.webname);
 			$("body").find("#homeh").text(res.data.webname);
 			$("body").find("#gg").text(res.data.gg);
 			$("body").find("#url").text(res.data.url);
