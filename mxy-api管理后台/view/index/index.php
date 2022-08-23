@@ -17,7 +17,7 @@ include("./asd/a.php");
 <link href="/layui/other/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/layui/other/css/layui.css">
 <link href="/layui/other/css/oneui.css" rel="stylesheet">
-<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="{$way}">
 <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="/layui/layui.all.js"></script>
 <script>
@@ -25,7 +25,7 @@ include("./asd/a.php");
 </head>
 
 <body>
-<header class="site-header">
+<header class="site-header" style="background: url({$backway});">
 <nav class="nav_jsxs">
 <span style="float: left;"><a class="logo_jsxs" href=""></a></span>
 <a href="../">首页</a>

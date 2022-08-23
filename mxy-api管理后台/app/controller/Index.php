@@ -9,6 +9,8 @@ use think\facade\View;
 
 use think\facade\Db;
 
+use think\facade\Env;
+
 
 
 class Index extends Fix
@@ -20,6 +22,10 @@ class Index extends Fix
         $num = count($data['data']);
         $rand = rand(1,14);
         include('key.php');
+        $iconway = Env::get('logo.way');
+        $backway = Env::get("background.imgway");
+        View::assign('way',$iconway);
+        View::assign('backway',$backway);
         View::assign('key',$key);
         View::assign('number',$num);
         View::assign('randint',$rand);

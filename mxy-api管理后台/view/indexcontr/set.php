@@ -247,10 +247,10 @@ layui.use(['form','upload','element'], function(){
             }
         },"json");
     })
-    //背景上传
+    //图标上传
     var uploadInst = upload.render({
     elem: '#icon'
-    ,url: 'https://httpbin.org/post' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
+    ,url: '/indexcontr/iconupload' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
     ,before: function(obj){
       //预读本地文件示例，不支持ie8
       obj.preview(function(index, file, result){
@@ -263,10 +263,11 @@ layui.use(['form','upload','element'], function(){
     ,done: function(res){
       //如果上传失败
       if(res.code > 0){
-        return layer.msg('上传失败');
+        return layer.msg(res.msg);
       }
       //上传成功的一些操作
       //……
+      console.log(res);
       $('#demoText').html(''); //置空上传失败的状态
     }
     ,error: function(){
@@ -285,9 +286,10 @@ layui.use(['form','upload','element'], function(){
       }
     }
     });
+    //背景上传
     var uploadInst = upload.render({
     elem: '#upback'
-    ,url: 'https://httpbin.org/post' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
+    ,url: '/indexcontr/backupload' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
     ,before: function(obj){
       //预读本地文件示例，不支持ie8
       obj.preview(function(index, file, result){
