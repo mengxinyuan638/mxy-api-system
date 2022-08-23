@@ -105,7 +105,7 @@
 				admin.setConfigType("yml");
 				admin.setConfigPath("/config/pear.config.yml");
 				admin.render();
-				layer.alert('欢迎使用萌新源API管理系统V3.0', {icon: 6});
+				layer.alert('欢迎使用萌新源API管理系统V4.0', {icon: 6});
 
 				
 				
