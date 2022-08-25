@@ -23,6 +23,12 @@
                       </div>
                     </div>
                     <div class="layui-form-item">
+                      <label class="layui-form-label">友链站标</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="linkicon" id="linkicon" required  lay-verify="required" placeholder="请输入友链站标链接地址，记得填写协议头" autocomplete="off" class="layui-input">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
                         <label class="layui-form-label">友链地址</label>
                         <div class="layui-input-block">
                           <input type="text" id="linkurl" name="linkurl" required  lay-verify="required" placeholder="请输入友链地址" autocomplete="off" class="layui-input">

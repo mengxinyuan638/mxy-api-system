@@ -100,14 +100,15 @@ class Index extends Fix
 
         if($num== 0){
             echo "";
-            }else{
+        }else{
             for( $i = 0 ; $i < $num && $i < $num ; $i ++ ){
             $name=$v[$i]['name'];//名称
             $url=$v[$i]['url'];//提交地址
             $web=$v[$i]['web'];
+            $icon=$v[$i]['linkicon'];
 
             
-            echo '<a href="'.$url.'" target="_blank"><div class="item1"> <div class="avatar"> <img src="/favicon.ico"> </div> <div class="inner"> <h5><font color="black">'.$name.'</font></h5><p><font color="red">介绍:'.$web.'</font></p> </div> </div></a>';
+            echo '<a href="'.$url.'" target="_blank"><div class="item1"> <div class="avatar"> <img src="'.$icon.'"> </div> <div class="inner"> <h5><font color="black">'.$name.'</font></h5><p><font color="red">介绍:'.$web.'</font></p> </div> </div></a>';
             }
         }
 

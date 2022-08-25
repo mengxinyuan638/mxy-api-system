@@ -189,11 +189,13 @@ class Adminapi extends Base
         $linkname = $_POST['linkname'];//获取名称
         $linkurl = $_POST['linkurl'];//获取地址
         $web = $_POST['web'];//获取简介
+        $icon = $_POST['linkicon'];//获取站标
     
         $data[$num]['id'] = $num+1;
         $data[$num]['name'] = $linkname;//添加api名称
         $data[$num]['url'] = $linkurl;
         $data[$num]['web'] = $web;
+        $data[$num]['linkicon'] = $icon;
     
         $data1['data'] = $data;
         $data1['count'] = $number;
@@ -215,11 +217,13 @@ class Adminapi extends Base
         $linkname = $_POST['linkname'];//获取api名称
         $linkurl = $_POST['linkurl'];//获取api地址
         $web = $_POST['web'];//获取简介
+        $icon = $_POST['linkicon'];//获取站标
 
 
         $data[$num]['name'] = $linkname;//添加api名称
         $data[$num]['url'] = $linkurl;
         $data[$num]['web'] = $web;
+        $data[$num]['linkicon'] = $icon;
 
         $data1['data'] = $data;
         $data = json_encode($data1,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码

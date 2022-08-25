@@ -88,6 +88,7 @@ layui.use(['table','layer','form'],function(){
         body.find("#linkname").val(obj.data.name);//回显名称
         body.find("#linkurl").val(obj.data.url);//回显
         body.find("#web").val(obj.data.web);//回显
+        body.find("#linkicon").val(obj.data.linkicon);
         body.find("input[name='id']").attr({'value':obj.data.id});
       }
     });
@@ -141,6 +142,9 @@ layui.use(['table','layer','form'],function(){
       ,{
         field: 'web', 
         title: '网站简介'
+      },{
+        field: 'linkicon', 
+        title: '友链站标地址'
       }
       ,{
         title:'操作',
