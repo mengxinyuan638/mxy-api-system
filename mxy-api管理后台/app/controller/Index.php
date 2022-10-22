@@ -29,7 +29,7 @@ class Index extends Fix
         View::assign('key',$key);
         View::assign('number',$num);
         View::assign('randint',$rand);
-         return view::fetch();
+        return view::fetch();
     }
 
     public function apidata()

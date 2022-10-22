@@ -394,10 +394,8 @@ if (!function_exists('echo_value')) {
     <?php } ?>
 
     <div class="copyright">
-        <a title="官方网站" href="http://www.thinkphp.cn">ThinkPHP</a> 
-        <span>V<?php echo \think\facade\App::version(); ?></span> 
-        <span>{ 十年磨一剑-为API开发设计的高性能框架 }</span>
-        <span>- <a title="官方手册" href="https://www.kancloud.cn/manual/thinkphp6_0/content">官方手册</a></span>
+        <span>{ 萌新源api管理系统，打造轻便快捷的管理系统 }</span>
+        <span>- <a title="官方仓库" href="https://gitee.com/meng-xinyuan-mxy/mxy-api">官方仓库</a></span>
     </div>
     <?php if (\think\facade\App::isDebug()) { ?>
     <script>

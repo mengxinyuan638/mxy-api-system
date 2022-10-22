@@ -9,11 +9,15 @@ use think\facade\Db;
 
 use think\facade\Cookie;
 
+use think\facade\Env;
+
 
 class Home extends Base
 {
     public function index()
     {
+        $version = Env::get("version.version");//获取版本号
+        View::assign('version',$version);
         return view::fetch();
     }
     public function logout(){

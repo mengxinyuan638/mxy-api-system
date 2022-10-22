@@ -17,7 +17,8 @@ $data = json_encode($data1,JSON_UNESCAPED_UNICODE);
 $num = count($data1);
 //读取接口数量
 $zcapi = preg_match_all('/{"id":(.*?),"name":"(.*?)","dz":"(.*?)","cs":"(.*?)","gg":"(.*?)","sl":"(.*?)","sj":"(.*?)","zt":"zc","way":"(.*?)"}/',$data,$v);
-$ycapi = preg_match_all('/{"id":(.*?),"name":"(.*?)","dz":"(.*?)","cs":"(.*?)","gg":"(.*?)","sl":"(.*?)","sj":"(.*?)","zt":"yc","way":"(.*?)"}/',$data,$v);
+$ycapi = preg_match_all('/{"id":(.*?),"name":"(.*?)","dz":"(.*?)","cs":"(.*?)","gg":"(.*?)","sl":"(.*?)","sj":"(.*?)","zt":"yc","way":"(.*?)"}/',$data,$k);
+$ycapi = count($k[0]);
 $aa = intval(file_get_contents("asd/jishu.dat"));//读取访问量
 ?>
 	<body class="pear-container">

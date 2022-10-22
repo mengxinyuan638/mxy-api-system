@@ -40,6 +40,7 @@ use think\initializer\RegisterService;
 class App extends Container
 {
     const VERSION = '6.0.13LTS';
+    
 
     /**
      * 应用调试模式

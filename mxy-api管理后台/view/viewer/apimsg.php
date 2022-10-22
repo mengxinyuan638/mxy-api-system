@@ -99,7 +99,7 @@ layui.use(['table','layer','form'],function(){
       area: setpage(),
       end:function(){
         //表格数据刷新
-        table.reload('tableID','url');
+        table.reload('tableID',{where:{nowTime:new Date().getTime()}});
       },
       success:function(layero, index){
         //数据回显
@@ -145,7 +145,7 @@ layui.use(['table','layer','form'],function(){
       area: setpage(),
       end:function(){
         //表格数据刷新
-        table.reload('tableID');
+        table.reload('tableID',{where:{nowTime:new Date().getTime()}});
       }
     });
   });
@@ -155,7 +155,7 @@ layui.use(['table','layer','form'],function(){
   //第一个实例
   table.render({
     elem: '#demo'
-    ,url: '/jiekoushuju.json' //数据接口
+    ,url: '/Adminapi/pagelimit/?nowTime='+new Date().getTime() //数据接口
     ,id:'tableID'
     ,page: true //开启分页
     ,limit: 10

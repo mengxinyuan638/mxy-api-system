@@ -232,4 +232,100 @@ class Adminapi extends Base
         $m = array("code"=>200,"msg"=>"成功","id"=>$num);
         exit(json_encode($m,JSON_UNESCAPED_UNICODE));
     }
+
+    public function pagelimit(){//数据分页的实现
+        $page = $_GET['page'];
+        $limit = $_GET['limit'];
+        $limit_num = $page*$limit;
+        $first_num = $limit*$page;
+        $data_file = 'jiekoushuju.json';
+        $data = file_get_contents($data_file);
+        $data1 = json_decode($data,True);
+        $data = $data1['data'];
+
+        $num = count($data);
+        $data_array = array();
+
+        if($page==1){
+            if($num > $limit){#数据条数大于限制的就执行
+                for($i=0;$i<$limit;$i++){#打印数据
+                    $id = $data[$i]["id"];
+                    $name = $data[$i]["name"];
+                    $dz = $data[$i]["dz"];
+                    $cs = $data[$i]["cs"];
+                    $gg = $data[$i]["gg"];
+                    $sl = $data[$i]["sl"];
+                    $zt = $data[$i]["zt"];
+                    $way = $data[$i]["way"];
+        
+                    $last_data_array = array("id"=>$id,"name"=>$name,"dz"=>$dz,"cs"=>$cs,"gg"=>$gg,"sl"=>$sl,"zt"=>$zt,"way"=>$way);
+                    
+                    
+                    $data_array[$i] = $last_data_array;#生成新的数据数组
+                    
+                }
+                $data1['data'] = $data_array;
+                exit(json_encode($data1,JSON_UNESCAPED_UNICODE));
+            }else{
+                for($i=0;$i<$num;$i++){#打印数据
+                    $id = $data[$i]["id"];
+                    $name = $data[$i]["name"];
+                    $dz = $data[$i]["dz"];
+                    $cs = $data[$i]["cs"];
+                    $gg = $data[$i]["gg"];
+                    $sl = $data[$i]["sl"];
+                    $zt = $data[$i]["zt"];
+                    $way = $data[$i]["way"];
+        
+                    $last_data_array = array("id"=>$id,"name"=>$name,"dz"=>$dz,"cs"=>$cs,"gg"=>$gg,"sl"=>$sl,"zt"=>$zt,"way"=>$way);
+                    
+                    
+                    $data_array[$i] = $last_data_array;#生成新的数据数组
+                    
+                }
+                $data1['data'] = $data_array;
+                exit(json_encode($data1,JSON_UNESCAPED_UNICODE));
+            }
+        }else{
+            if($num-$first_num+$limit > $limit){#数据条数大于限制的就执行
+                for($i=$first_num-$limit;$i<$first_num;$i++){#打印数据
+                    $id = $data[$i]["id"];
+                    $name = $data[$i]["name"];
+                    $dz = $data[$i]["dz"];
+                    $cs = $data[$i]["cs"];
+                    $gg = $data[$i]["gg"];
+                    $sl = $data[$i]["sl"];
+                    $zt = $data[$i]["zt"];
+                    $way = $data[$i]["way"];
+        
+                    $last_data_array = array("id"=>$id,"name"=>$name,"dz"=>$dz,"cs"=>$cs,"gg"=>$gg,"sl"=>$sl,"zt"=>$zt,"way"=>$way);
+                    
+                    
+                    $data_array[$i] = $last_data_array;#生成新的数据数组
+                    
+                }
+                $data1['data'] = $data_array;
+                exit(json_encode($data1,JSON_UNESCAPED_UNICODE));
+            }else{
+                for($i=$first_num-$limit;$i<$num;$i++){#打印数据
+                    $id = $data[$i]["id"];
+                    $name = $data[$i]["name"];
+                    $dz = $data[$i]["dz"];
+                    $cs = $data[$i]["cs"];
+                    $gg = $data[$i]["gg"];
+                    $sl = $data[$i]["sl"];
+                    $zt = $data[$i]["zt"];
+                    $way = $data[$i]["way"];
+        
+                    $last_data_array = array("id"=>$id,"name"=>$name,"dz"=>$dz,"cs"=>$cs,"gg"=>$gg,"sl"=>$sl,"zt"=>$zt,"way"=>$way);
+                    
+                    
+                    $data_array[$i] = $last_data_array;#生成新的数据数组
+                    
+                }
+                $data1['data'] = $data_array;
+                exit(json_encode($data1,JSON_UNESCAPED_UNICODE));
+            }
+        }
+    }
 }
