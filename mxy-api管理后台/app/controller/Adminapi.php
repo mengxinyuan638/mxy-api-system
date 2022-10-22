@@ -255,10 +255,11 @@ class Adminapi extends Base
                     $cs = $data[$i]["cs"];
                     $gg = $data[$i]["gg"];
                     $sl = $data[$i]["sl"];
+                    $sj = $data[$i]["sj"];
                     $zt = $data[$i]["zt"];
                     $way = $data[$i]["way"];
         
-                    $last_data_array = array("id"=>$id,"name"=>$name,"dz"=>$dz,"cs"=>$cs,"gg"=>$gg,"sl"=>$sl,"zt"=>$zt,"way"=>$way);
+                    $last_data_array = array("id"=>$id,"name"=>$name,"dz"=>$dz,"cs"=>$cs,"gg"=>$gg,"sl"=>$sl,"zt"=>$zt,"way"=>$way,"sj"=>$sj);
                     
                     
                     $data_array[$i] = $last_data_array;#生成新的数据数组
@@ -274,10 +275,11 @@ class Adminapi extends Base
                     $cs = $data[$i]["cs"];
                     $gg = $data[$i]["gg"];
                     $sl = $data[$i]["sl"];
+                    $sj = $data[$i]["sj"];
                     $zt = $data[$i]["zt"];
                     $way = $data[$i]["way"];
         
-                    $last_data_array = array("id"=>$id,"name"=>$name,"dz"=>$dz,"cs"=>$cs,"gg"=>$gg,"sl"=>$sl,"zt"=>$zt,"way"=>$way);
+                    $last_data_array = array("id"=>$id,"name"=>$name,"dz"=>$dz,"cs"=>$cs,"gg"=>$gg,"sl"=>$sl,"zt"=>$zt,"way"=>$way,"sj"=>$sj);
                     
                     
                     $data_array[$i] = $last_data_array;#生成新的数据数组
@@ -295,10 +297,11 @@ class Adminapi extends Base
                     $cs = $data[$i]["cs"];
                     $gg = $data[$i]["gg"];
                     $sl = $data[$i]["sl"];
+                    $sj = $data[$i]["sj"];
                     $zt = $data[$i]["zt"];
                     $way = $data[$i]["way"];
         
-                    $last_data_array = array("id"=>$id,"name"=>$name,"dz"=>$dz,"cs"=>$cs,"gg"=>$gg,"sl"=>$sl,"zt"=>$zt,"way"=>$way);
+                    $last_data_array = array("id"=>$id,"name"=>$name,"dz"=>$dz,"cs"=>$cs,"gg"=>$gg,"sl"=>$sl,"zt"=>$zt,"way"=>$way,"sj"=>$sj);
                     
                     
                     $data_array[$i] = $last_data_array;#生成新的数据数组
@@ -314,10 +317,11 @@ class Adminapi extends Base
                     $cs = $data[$i]["cs"];
                     $gg = $data[$i]["gg"];
                     $sl = $data[$i]["sl"];
+                    $sj = $data[$i]["sj"];
                     $zt = $data[$i]["zt"];
                     $way = $data[$i]["way"];
         
-                    $last_data_array = array("id"=>$id,"name"=>$name,"dz"=>$dz,"cs"=>$cs,"gg"=>$gg,"sl"=>$sl,"zt"=>$zt,"way"=>$way);
+                    $last_data_array = array("id"=>$id,"name"=>$name,"dz"=>$dz,"cs"=>$cs,"gg"=>$gg,"sl"=>$sl,"zt"=>$zt,"way"=>$way,"sj"=>$sj);
                     
                     
                     $data_array[$i] = $last_data_array;#生成新的数据数组
