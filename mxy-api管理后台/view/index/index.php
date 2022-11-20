@@ -114,9 +114,7 @@ tick();</script>
 </script>
 
 
-</script></p><div id="J_player">     <audio id="J_MPlayer" src="/mp3/{$randint}.mp3"controls="controls" autoplay="autoplay" autobuffer="autobuffer"></audio>    </div>
-
-</div>
+</script></p>
 </header><section class="content content-boxed">
 <div class="row row_jsxs" id="listApi">
 
