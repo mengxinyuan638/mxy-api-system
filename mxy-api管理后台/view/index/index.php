@@ -25,7 +25,7 @@ include("./asd/a.php");
 </head>
 
 <body>
-<header class="site-header" style="background: url({$backway});">
+<header class="site-header" style="background: url({$backway});background-size: 100%;">
 <nav class="nav_jsxs">
 <span style="float: left;"><a class="logo_jsxs" href=""></a></span>
 <a href="../">首页</a>
