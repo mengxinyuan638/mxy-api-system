@@ -26,7 +26,6 @@ include("./asd/a.php");
 </head>
 
 <body>
-<<<<<<< HEAD
 	<header class="site-header" style="background: url({$backway});background-size: 100%;">
 		<nav class="nav_jsxs">
 			<span style="float: left;"><a class="logo_jsxs" href=""></a></span>
@@ -35,16 +34,6 @@ include("./asd/a.php");
 		</nav>
 		<div class="box-text">
 			<h1 id="homeh">萌新源API</h1>
-=======
-<header class="site-header" style="background: url({$backway});background-size: 100%;">
-<nav class="nav_jsxs">
-<span style="float: left;"><a class="logo_jsxs" href=""></a></span>
-<a href="../">首页</a>
-<a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=RctrqqLrcRrcV4PZnNwnsN_eR2hmGsQd&noverify=0">反馈</a>
-</nav>
-<div class="box-text">
-<h1 id="homeh">萌新源API</h1>
->>>>>>> 7a60d2c9dcda2b2fc4c6d1da5b6a79f471a5094d
 
 
 			<p>稳定、快速、免费的 API 接口服务<span class="package-amount">共收录了 <strong>{$number}</strong>个接口</span>
