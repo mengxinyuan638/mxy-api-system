@@ -35,31 +35,31 @@ location / {
 
 ### 登录界面
 
-![](D:\Blog\文章\文章图片\README\login_page.png)
+![](https://zsy.juncikeji.xyz/i/img/login_page.png)
 
 ### 首页
 
-![](D:\Blog\文章\文章图片\README\home_page.png)
+![](https://zsy.juncikeji.xyz/i/img/home_page.png)
 
 ### 前台预览
 
-![](D:\Blog\文章\文章图片\README\index_view.png)
+![](https://zsy.juncikeji.xyz/i/img/index_view.png)
 
 ### API信息管理
 
-![](D:\Blog\文章\文章图片\README\api_msg.png)
+![](https://zsy.juncikeji.xyz/i/img/api_msg.png)
 
 ### 前台信息管理
 
-![](D:\Blog\文章\文章图片\README\msg_edit.png)
+![](https://zsy.juncikeji.xyz/i/img/msg_edit.png)
 
 ### 友链管理
 
-![](D:\Blog\文章\文章图片\README\link.png)
+![](https://zsy.juncikeji.xyz/i/img/link.png)
 
 ### 首页底部信息管理
 
-![](D:\Blog\文章\文章图片\README\foot_page.png)
+![](https://zsy.juncikeji.xyz/i/img/foot_page.png)
 
 
 
