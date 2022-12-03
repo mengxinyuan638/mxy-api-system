@@ -48,6 +48,13 @@
 			"type": 1,
 			"openType": "_iframe",
 			"href": "/indexcontr/linkset"
+		},{
+			"id": 11,
+			"title": "底部信息",
+			"icon": "layui-icon layui-icon-template-1",
+			"type": 1,
+			"openType": "_iframe",
+			"href": "/indexcontr/footpage"
 		}]
 	}
 ]

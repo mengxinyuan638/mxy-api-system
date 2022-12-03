@@ -126,7 +126,8 @@ class Index extends Fix
         $tcgg = $data['tcgg'];
         $type = $data['type'];
         $tctype = $data['tctype'];
-        $m = array("code"=>200,"msg"=>"成功","data"=>array("url"=>$url,"qq"=>$qq,"webname"=>$webname,"gg"=>$gg,"tcgg"=>$tcgg,"type"=>$type,"tctype"=>$tctype));
+        $foot_msg = $data['foot_msg'];//获取底部信息
+        $m = array("code"=>200,"msg"=>"成功","data"=>array("url"=>$url,"qq"=>$qq,"webname"=>$webname,"gg"=>$gg,"tcgg"=>$tcgg,"type"=>$type,"tctype"=>$tctype,"foot_msg"=>$foot_msg));
         $m = json_encode($m,JSON_UNESCAPED_UNICODE);
         exit($m);
     }

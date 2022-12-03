@@ -33,6 +33,7 @@ if($way=='connect'){
         $m = array("code"=>500,"msg"=>"创建数据表错误:". mysqli_error($conn));
     }
 }elseif($way=='add'){
+    $backpassword = md5($backpassword);#加密一下密码
     $conn = mysqli_connect($host,$user,$psw,$db_name);
     $sql="INSERT INTO `user`
     (username, password)

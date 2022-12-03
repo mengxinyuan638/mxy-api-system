@@ -62,6 +62,8 @@ class Adminapi extends Base
         $key = $key-1;
         $data = file_get_contents("jiekoushuju.json");
         $data1 = json_decode($data,True);
+        $num = $data1['count']-1;//获取数据数量
+        $data1['count'] = $num;//删减数据数量
         $data = $data1['data'];
         $keys = array_keys($data);
         $index = array_search($key, $keys);
@@ -151,6 +153,8 @@ class Adminapi extends Base
         $key = $key-1;
         $data = file_get_contents("link.json");
         $data1 = json_decode($data,True);
+        $num = $data1['count']-1;//获取数据数量
+        $data1['count'] = $num;//删减数据数量
         $data = $data1['data'];
         $keys = array_keys($data);
         $index = array_search($key, $keys);
@@ -322,6 +326,92 @@ class Adminapi extends Base
                     $way = $data[$i]["way"];
         
                     $last_data_array = array("id"=>$id,"name"=>$name,"dz"=>$dz,"cs"=>$cs,"gg"=>$gg,"sl"=>$sl,"zt"=>$zt,"way"=>$way,"sj"=>$sj);
+                    
+                    
+                    $data_array[$i] = $last_data_array;#生成新的数据数组
+                    
+                }
+                $data1['data'] = $data_array;
+                exit(json_encode($data1,JSON_UNESCAPED_UNICODE));
+            }
+        }
+    }
+    public function pagelimit_link(){//友情链接数据分页的实现
+        $page = $_GET['page'];
+        $limit = $_GET['limit'];
+        $limit_num = $page*$limit;
+        $first_num = $limit*$page;
+        $data_file = 'link.json';
+        $data = file_get_contents($data_file);
+        $data1 = json_decode($data,True);
+        $data = $data1['data'];
+
+        $num = count($data);
+        $data_array = array();
+
+        if($page==1){
+            if($num > $limit){#数据条数大于限制的就执行
+                for($i=0;$i<$limit;$i++){#打印数据
+                    $id = $data[$i]["id"];
+                    $name = $data[$i]["name"];
+                    $url = $data[$i]["url"];
+                    $web = $data[$i]["web"];
+                    $linkicon = $data[$i]["linkicon"];
+        
+                    $last_data_array = array("id"=>$id,"name"=>$name,"url"=>$url,"web"=>$web,"linkicon"=>$linkicon);
+                    
+                    
+                    $data_array[$i] = $last_data_array;#生成新的数据数组
+                    
+                }
+                $data1['data'] = $data_array;
+                exit(json_encode($data1,JSON_UNESCAPED_UNICODE));
+            }else{
+                for($i=0;$i<$num;$i++){#打印数据
+                    $id = $data[$i]["id"];
+                    $name = $data[$i]["name"];
+                    $url = $data[$i]["url"];
+                    $web = $data[$i]["web"];
+                    $linkicon = $data[$i]["linkicon"];
+
+        
+                    $last_data_array = array("id"=>$id,"name"=>$name,"url"=>$url,"web"=>$web,"linkicon"=>$linkicon);
+                    
+                    
+                    $data_array[$i] = $last_data_array;#生成新的数据数组
+                    
+                }
+                $data1['data'] = $data_array;
+                exit(json_encode($data1,JSON_UNESCAPED_UNICODE));
+            }
+        }else{
+            if($num-$first_num+$limit > $limit){#数据条数大于限制的就执行
+                for($i=$first_num-$limit;$i<$first_num;$i++){#打印数据
+                    $id = $data[$i]["id"];
+                    $name = $data[$i]["name"];
+                    $url = $data[$i]["url"];
+                    $web = $data[$i]["web"];
+                    $linkicon = $data[$i]["linkicon"];
+
+        
+                    $last_data_array = array("id"=>$id,"name"=>$name,"url"=>$url,"web"=>$web,"linkicon"=>$linkicon);
+                    
+                    
+                    $data_array[$i] = $last_data_array;#生成新的数据数组
+                    
+                }
+                $data1['data'] = $data_array;
+                exit(json_encode($data1,JSON_UNESCAPED_UNICODE));
+            }else{
+                for($i=$first_num-$limit;$i<$num;$i++){#打印数据
+                    $id = $data[$i]["id"];
+                    $name = $data[$i]["name"];
+                    $url = $data[$i]["url"];
+                    $web = $data[$i]["web"];
+                    $linkicon = $data[$i]["linkicon"];
+
+        
+                    $last_data_array = array("id"=>$id,"name"=>$name,"url"=>$url,"web"=>$web,"linkicon"=>$linkicon);
                     
                     
                     $data_array[$i] = $last_data_array;#生成新的数据数组
