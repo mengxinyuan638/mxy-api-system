@@ -128,7 +128,7 @@
             var upload = layui.upload;
             var element = layui.element;
             //维护按钮状态及弹窗按钮状态
-            $.post("/indexcontr/webmsg", function(d) {
+            $.post("/index/webmsg", function(d) {
                 $("body").find("#webname").val(d.data.webname);
                 $("body").find("#weburl").val(d.data.url);
                 $("body").find("#qq").val(d.data.qq);

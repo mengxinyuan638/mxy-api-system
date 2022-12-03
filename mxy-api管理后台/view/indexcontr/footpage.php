@@ -40,7 +40,7 @@
             var $ = layui.jquery;
             var form = layui.form;
             var layer = layui.layer;
-            $.post("/indexcontr/webmsg", function(d) { //回显
+            $.post("/index/webmsg", function(d) { //回显
                 $("body").find("#foot_msg").val(d.data.foot_msg);
             }, "json");
 
