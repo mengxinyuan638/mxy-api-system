@@ -16,7 +16,6 @@ class Login
     {
         $name = input('post.username');
         $password = input('post.password');
-        $password = md5($password);#加密收取的密码，方便比对
         $name_check =  Db::table('user')->where('username',$name)->find();
         if(empty($name_check)){
             echo json_encode(['code'=>50,'msg'=>'请输入帐号或密码']);

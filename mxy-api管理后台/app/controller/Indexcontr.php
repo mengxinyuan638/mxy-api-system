@@ -22,11 +22,6 @@ class Indexcontr extends Base{
         return view::fetch();
     }
 
-    public function footpage()//底部信息设置页面
-    {   
-        return view::fetch();
-    }
-
     public function webmsg(){//获取web信息
         //用来获取api数据
         $data = file_get_contents("key.json");
@@ -38,8 +33,7 @@ class Indexcontr extends Base{
         $tcgg = $data['tcgg'];
         $type = $data['type'];
         $tctype = $data['tctype'];
-        $foot_msg = $data['foot_msg'];//获取底部信息
-        $m = array("code"=>200,"msg"=>"成功","data"=>array("url"=>$url,"qq"=>$qq,"webname"=>$webname,"gg"=>$gg,"tcgg"=>$tcgg,"type"=>$type,"tctype"=>$tctype,"foot_msg"=>$foot_msg));
+        $m = array("code"=>200,"msg"=>"成功","data"=>array("url"=>$url,"qq"=>$qq,"webname"=>$webname,"gg"=>$gg,"tcgg"=>$tcgg,"type"=>$type,"tctype"=>$tctype));
         $m = json_encode($m,JSON_UNESCAPED_UNICODE);
         exit($m);
     }
@@ -63,18 +57,6 @@ class Indexcontr extends Base{
         $m = json_encode($m,JSON_UNESCAPED_UNICODE);
         exit($m);
     }
-    public function foot_msg_edit(){
-        $foot_msg = $_POST['foot_msg'];
-        $data = file_get_contents("key.json");
-        $data = json_decode($data,True);
-        $data['foot_msg'] = $foot_msg;
-        $data = json_encode($data,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
-        file_put_contents("key.json",$data);
-        $m = array("code"=>200,"msg"=>"成功");
-        $m = json_encode($m,JSON_UNESCAPED_UNICODE);
-        exit($m);
-    }
-
     public function iconupload(){
         $file = $_FILES['file']; // 获取上传的文件
         $name_icon = "uploads/icon/".$_FILES["file"]["name"];
