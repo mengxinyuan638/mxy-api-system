@@ -13,7 +13,7 @@ class Fix{
     public function __construct(){
         $lockfile="install.lock";
         if(file_exists($lockfile)){
-            $data = file_get_contents("webtype.json");
+            $data = file_get_contents("./user_data/webtype.json");
             $data = json_decode($data,True);
             $type = $data['type'];
             if($type=='true'){

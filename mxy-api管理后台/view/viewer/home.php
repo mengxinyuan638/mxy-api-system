@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="/admin/css/other/console1.css" />
 </head>
 <?php
-$data = file_get_contents("jiekoushuju.json");
+$data = file_get_contents("./user_data/jiekoushuju.json");
 $data = json_decode($data, True);
 $data1 = $data['data'];
 $data = json_encode($data1, JSON_UNESCAPED_UNICODE);

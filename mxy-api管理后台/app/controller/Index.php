@@ -17,7 +17,7 @@ class Index extends Fix
 {
     public function index()
     {   
-        $data = file_get_contents("jiekoushuju.json");
+        $data = file_get_contents("./user_data/jiekoushuju.json");
         $data = json_decode($data,True);
         $num = count($data['data']);
         $rand = rand(1,14);
@@ -36,7 +36,7 @@ class Index extends Fix
     {
         
 
-        $data = file_get_contents("jiekoushuju.json");
+        $data = file_get_contents("./user_data/jiekoushuju.json");
         $data = json_decode($data,True);
         $v = $data['data'];
         $num = count($data['data']);
@@ -67,10 +67,10 @@ class Index extends Fix
 
     public function ss(){
         $id = $_GET['id'];
-        $data = file_get_contents("key.json");//读取站点信息
+        $data = file_get_contents("./user_data/key.json");//读取站点信息
         $data = json_decode($data,True);
         $url = $data['url'];
-        $str=file_get_contents("jiekoushuju.json");
+        $str=file_get_contents("./user_data/jiekoushuju.json");
         $str = json_decode($str,True);
         $v = $str['data'];
         $i=$id-1;
@@ -93,7 +93,7 @@ class Index extends Fix
     }
 
     public function linkdata(){
-        $data = file_get_contents("link.json");
+        $data = file_get_contents("./user_data/link.json");
         $data = json_decode($data,True);
         $v = $data['data'];
         $num = count($data['data']);
@@ -117,7 +117,7 @@ class Index extends Fix
 
     public function webmsg(){//获取web信息
         //用来获取api数据
-        $data = file_get_contents("key.json");
+        $data = file_get_contents("./user_data/key.json");
         $data = json_decode($data,True);
         $url = $data['url'];
         $qq = $data['qq'];
@@ -127,23 +127,24 @@ class Index extends Fix
         $type = $data['type'];
         $tctype = $data['tctype'];
         $foot_msg = $data['foot_msg'];//获取底部信息
-        $m = array("code"=>200,"msg"=>"成功","data"=>array("url"=>$url,"qq"=>$qq,"webname"=>$webname,"gg"=>$gg,"tcgg"=>$tcgg,"type"=>$type,"tctype"=>$tctype,"foot_msg"=>$foot_msg));
+        $start_time = $data['start_time'];//获取建站时间
+        $m = array("code"=>200,"msg"=>"成功","data"=>array("url"=>$url,"qq"=>$qq,"webname"=>$webname,"gg"=>$gg,"tcgg"=>$tcgg,"type"=>$type,"tctype"=>$tctype,"foot_msg"=>$foot_msg,"start_time"=>$start_time));
         $m = json_encode($m,JSON_UNESCAPED_UNICODE);
         exit($m);
     }
 
     public function webtype(){
         $type = $_POST['type'];
-        $data = file_get_contents("webtype.json");
+        $data = file_get_contents("./user_data/webtype.json");
         $data = json_decode($data,True);
         $data['type'] = $type;
         $data = json_encode($data,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
-        file_put_contents("webtype.json",$data);
-        $data2 = file_get_contents("key.json");
+        file_put_contents("./user_data/webtype.json",$data);
+        $data2 = file_get_contents("./user_data/key.json");
         $data2 = json_decode($data2,True);
         $data2['type'] = $type;
         $data2 = json_encode($data2,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
-        file_put_contents("key.json",$data2);
+        file_put_contents("./user_data/key.json",$data2);
 
         $m = array("code"=>200,"msg"=>"成功");
         exit(json_encode($m,JSON_UNESCAPED_UNICODE));

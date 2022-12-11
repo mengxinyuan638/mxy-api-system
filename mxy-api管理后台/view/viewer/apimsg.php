@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/layui/css/layui.css" media="all">
 </head>
 <?php //用来获取api数据
-$data = file_get_contents("jiekoushuju.json");
+$data = file_get_contents("./user_data/jiekoushuju.json");
 $result = preg_match_all('/{"id":(.*?),"name":"(.*?)","dz":"(.*?)","cs":"(.*?)","gg":"(.*?)","sl":"(.*?)","sj":"(.*?)","zt":"(.*?)","way":"(.*?)"}/', $data, $v);
 $data2 = json_decode($data, true); // 把JSON字符串转成PHP数组
 $data1 = $data2['data'];

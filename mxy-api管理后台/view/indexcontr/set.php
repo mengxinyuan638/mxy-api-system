@@ -32,6 +32,13 @@
                             </div>
                         </div>
                         <div class="layui-form-item">
+                            <!-- 日期选择器 -->
+                            <label class="layui-form-label">建站时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" class="layui-input" id="date_change" name="date_change">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
                             <label class="layui-form-label">本站网址</label>
                             <div class="layui-input-block">
                                 <input type="text" id="weburl" name="weburl" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
@@ -120,15 +127,29 @@
     <script src="../../layui/layui.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
         //请求web信息
-        layui.use(['form', 'upload', 'element'], function() {
+        layui.use(['form', 'upload', 'element', 'laydate'], function() {
             var $ = layui.jquery;
             var layer = layui.layer;
             var form = layui.form;
             var webtype;
             var upload = layui.upload;
             var element = layui.element;
+            var laydate = layui.laydate; //引入laydate模块，用作日期选择器
             //维护按钮状态及弹窗按钮状态
             $.post("/index/webmsg", function(d) {
+                //这些起到回显作用
+                start_time = d.data.start_time
+                $("#date_change").attr("time", start_time) //给日期选择器赋值属性，方便传参
+                //日期选择器
+                //执行一个laydate实例
+                laydate.render({
+                    elem: '#date_change', //指定元素
+                    type: 'datetime',
+                    value: start_time, //回显建站时间
+                    done: function(value) {
+                        $("#date_change").attr("time", value) //给日期选择器赋值属性，方便传参
+                    }
+                });
                 $("body").find("#webname").val(d.data.webname);
                 $("body").find("#weburl").val(d.data.url);
                 $("body").find("#qq").val(d.data.qq);
@@ -149,7 +170,6 @@
                     form.render('checkbox'); //渲染
                 }
             }, "json");
-
 
             //维护tips
             $("#qttips").mouseenter(function() {

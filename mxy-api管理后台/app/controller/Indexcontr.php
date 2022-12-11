@@ -34,26 +34,29 @@ class Indexcontr extends Base{
         $url = $_POST['weburl'];
         $gg = $_POST['gg'];
         $tcgg = $_POST['tcgg'];
-        $data = file_get_contents("key.json");
+        $start_time = $_POST['date_change'];//获取改变的建站时间
+        $data = file_get_contents("./user_data/key.json");
         $data = json_decode($data,True);
+        //赋值
         $data['webname'] = $name;
         $data['qq'] = $qq;
         $data['url'] = $url;
         $data['gg'] = $gg;
         $data['tcgg'] = $tcgg;
+        $data['start_time'] = $start_time;
         $data = json_encode($data,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
-        file_put_contents("key.json",$data);
+        file_put_contents("./user_data/key.json",$data);
         $m = array("code"=>200,"msg"=>"成功","d"=>$name);
         $m = json_encode($m,JSON_UNESCAPED_UNICODE);
         exit($m);
     }
     public function foot_msg_edit(){
         $foot_msg = $_POST['foot_msg'];
-        $data = file_get_contents("key.json");
+        $data = file_get_contents("./user_data/key.json");
         $data = json_decode($data,True);
         $data['foot_msg'] = $foot_msg;
         $data = json_encode($data,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
-        file_put_contents("key.json",$data);
+        file_put_contents("./user_data/key.json",$data);
         $m = array("code"=>200,"msg"=>"成功");
         $m = json_encode($m,JSON_UNESCAPED_UNICODE);
         exit($m);
@@ -61,7 +64,7 @@ class Indexcontr extends Base{
 
     public function iconupload(){
         $file = $_FILES['file']; // 获取上传的文件
-        $name_icon = "uploads/icon/".$_FILES["file"]["name"];
+        $name_icon = "./user_data/uploads/icon/".$_FILES["file"]["name"];
         if ($file==null) {
             exit(json_encode(array('code'=>1, 'msg'=>'未上传图片'),JSON_UNESCAPED_UNICODE));
         }
@@ -82,21 +85,21 @@ class Indexcontr extends Base{
                 $fp = file_get_contents($pz);//读取配置
                 $fp2=fopen($pz,'w');
                 $head = '[LOGO]';
-                $name = 'WAY = uploads/icon/'. $_FILES["file"]["name"];
+                $name = 'WAY = ./user_data/uploads/icon/'. $_FILES["file"]["name"];
                 fwrite($fp2,$fp."\r\n".$head."\r\n".$name);   
                 fclose($fp2);
-                move_uploaded_file($_FILES["file"]["tmp_name"],'uploads/icon/'. $_FILES["file"]["name"]);
+                move_uploaded_file($_FILES["file"]["tmp_name"],'./user_data/uploads/icon/'. $_FILES["file"]["name"]);
                 $img = "upload/icon/".$_FILES["file"]["name"];
                 exit(json_encode(array('code'=>0, 'msg'=>$img),JSON_UNESCAPED_UNICODE));
             }else{
                 $pz = '../.env';
                 $fp = file_get_contents($pz);//读取配置
-                $name = 'WAY = uploads/icon/'. $_FILES["file"]["name"];
+                $name = 'WAY = ./user_data/uploads/icon/'. $_FILES["file"]["name"];
                 $fp = str_replace($env_way2,$name,$fp);
                 $fp2=fopen($pz,'w');
                 fwrite($fp2,$fp);   
                 fclose($fp2);
-                move_uploaded_file($_FILES["file"]["tmp_name"],'uploads/icon/'. $_FILES["file"]["name"]);
+                move_uploaded_file($_FILES["file"]["tmp_name"],'./user_data/uploads/icon/'. $_FILES["file"]["name"]);
                 $img = "upload/icon/".$_FILES["file"]["name"];
                 exit(json_encode(array('code'=>0, 'msg'=>$img),JSON_UNESCAPED_UNICODE));
             }
@@ -105,7 +108,7 @@ class Indexcontr extends Base{
     }
     public function backupload(){
         $file = $_FILES['file']; // 获取上传的文件
-        $name_back = "uploads/back/".$_FILES["file"]["name"];
+        $name_back = "./user_data/uploads/back/".$_FILES["file"]["name"];
         if ($file==null) {
             exit(json_encode(array('code'=>1, 'msg'=>'未上传图片'),JSON_UNESCAPED_UNICODE));
         }
@@ -126,21 +129,21 @@ class Indexcontr extends Base{
                 $fp = file_get_contents($pz);//读取配置
                 $fp2=fopen($pz,'w');
                 $head = '[BACKGROUND]';
-                $name = 'IMGWAY = uploads/back/'. $_FILES["file"]["name"];
+                $name = 'IMGWAY = ./user_data/uploads/back/'. $_FILES["file"]["name"];
                 fwrite($fp2,$fp."\r\n".$head."\r\n".$name);   
                 fclose($fp2);
-                move_uploaded_file($_FILES["file"]["tmp_name"],'uploads/back/'. $_FILES["file"]["name"]);
+                move_uploaded_file($_FILES["file"]["tmp_name"],'./user_data/uploads/back/'. $_FILES["file"]["name"]);
                 $img = "upload/back/".$_FILES["file"]["name"];
                 exit(json_encode(array('code'=>0, 'msg'=>$img),JSON_UNESCAPED_UNICODE));
             }else{
                 $pz = '../.env';
                 $fp = file_get_contents($pz);//读取配置
-                $name = 'IMGWAY = uploads/back/'. $_FILES["file"]["name"];
+                $name = 'IMGWAY = ./user_data/uploads/back/'. $_FILES["file"]["name"];
                 $fp = str_replace($env_way2,$name,$fp);
                 $fp2=fopen($pz,'w');
                 fwrite($fp2,$fp);   
                 fclose($fp2);
-                move_uploaded_file($_FILES["file"]["tmp_name"],'uploads/back/'. $_FILES["file"]["name"]);
+                move_uploaded_file($_FILES["file"]["tmp_name"],'./user_data/uploads/back/'. $_FILES["file"]["name"]);
                 $img = "upload/back/".$_FILES["file"]["name"];
                 exit(json_encode(array('code'=>0, 'msg'=>$img),JSON_UNESCAPED_UNICODE));
             }

@@ -370,24 +370,30 @@ include("./asd/a.php");
 								<a class="block" href="">
 									<p class="text-center" id="qq">本网站只提供接口服务，造成的一切后果与本网站无关!如果本站发布的内容侵犯你的利益，请联系我。发送至我的邮箱</p>
 									<p class="text-center"><span id="runtime_span"></span>
+										<script src="component/layui/layui.js"></script>
 										<script type="text/javascript">
 											function show_runtime() {
 												window.setTimeout("show_runtime()", 1000);
-												X = new
-												Date("06/10/2022 00:00:00");
-												Y = new Date();
-												T = (Y.getTime() - X.getTime());
-												M = 24 * 60 * 60 * 1000;
-												a = T / M;
-												A = Math.floor(a);
-												b = (a - A) * 24;
-												B = Math.floor(b);
-												c = (b - B) * 60;
-												C = Math.floor((b - B) * 60);
-												D = Math.floor((c - C) * 60);
-												runtime_span.innerHTML = "本站稳定运行: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+												layui.use('form', function() {
+													var $ = layui.jquery;
+													$.get("/index/webmsg", function(data4) { //请求建站时间
+														X = new Date(data4.data.start_time); //建站时间定义
+														Y = new Date();
+														T = (Y.getTime() - X.getTime());
+														M = 24 * 60 * 60 * 1000;
+														a = T / M;
+														A = Math.floor(a);
+														b = (a - A) * 24;
+														B = Math.floor(b);
+														c = (b - B) * 60;
+														C = Math.floor((b - B) * 60);
+														D = Math.floor((c - C) * 60);
+														runtime_span.innerHTML = "本站稳定运行: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+													}, "json");
+												})
 											}
 											show_runtime();
+										</script>
 										</script>
 									</p>
 									<div id="foot_msg">
@@ -427,12 +433,10 @@ include("./asd/a.php");
 				$("#yqlj").html(data2);
 			})
 			$.get("/index/webmsg", function(data3) { //请求底部信息
-				console.log(data3)
 				$("#foot_msg").prepend(data3.data.foot_msg);
 			}, "json");
 			$.get("index/webmsg", function(res) {
 				var qq = $("body").find("#qq").text();
-				console.log(qq);
 				$("title").text(res.data.webname);
 				$("body").find("#homeh").text(res.data.webname);
 				$("body").find("#gg").text(res.data.gg);

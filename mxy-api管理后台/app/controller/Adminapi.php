@@ -12,8 +12,7 @@ class Adminapi extends Base
 {
     public function addapi()
     {
-       
-        $data = file_get_contents("jiekoushuju.json");
+        $data = file_get_contents("./user_data/jiekoushuju.json");
         $data1 = json_decode($data,True);
         $data = $data1['data'];
         $num = count($data);
@@ -51,7 +50,7 @@ class Adminapi extends Base
         $data1['data'] = $data;
         $data1['count'] = $number;
         $data = json_encode($data1,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
-        file_put_contents("jiekoushuju.json",$data);
+        file_put_contents("./user_data/jiekoushuju.json",$data);
     
         $m = array("code"=>200,"msg"=>"成功");
         exit(json_encode($m,JSON_UNESCAPED_UNICODE));
@@ -60,7 +59,7 @@ class Adminapi extends Base
     public function delapi(){
         $key = $_GET['id'];
         $key = $key-1;
-        $data = file_get_contents("jiekoushuju.json");
+        $data = file_get_contents("./user_data/jiekoushuju.json");
         $data1 = json_decode($data,True);
         $num = $data1['count']-1;//获取数据数量
         $data1['count'] = $num;//删减数据数量
@@ -76,13 +75,13 @@ class Adminapi extends Base
         }
         $data1['data'] = $data;
         $data = json_encode($data1,JSON_UNESCAPED_UNICODE);
-        file_put_contents("jiekoushuju.json",$data);
+        file_put_contents("./user_data/jiekoushuju.json",$data);
 
         $m = array("code"=>200,"msg"=>"成功");
         exit(json_encode($m,JSON_UNESCAPED_UNICODE));
     }
     public function editapi(){
-        $data = file_get_contents("jiekoushuju.json");
+        $data = file_get_contents("./user_data/jiekoushuju.json");
         $data1 = json_decode($data,True);
         $data = $data1['data'];
 
@@ -110,39 +109,39 @@ class Adminapi extends Base
 
         $data1['data'] = $data;
         $data = json_encode($data1,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
-        file_put_contents("jiekoushuju.json",$data);
+        file_put_contents("./user_data/jiekoushuju.json",$data);
 
         $m = array("code"=>200,"msg"=>"成功","id"=>$num);
         exit(json_encode($m,JSON_UNESCAPED_UNICODE));
     }
     public function webtype(){
         $type = $_POST['type'];
-        $data = file_get_contents("webtype.json");
+        $data = file_get_contents("./user_data/webtype.json");
         $data = json_decode($data,True);
         $data['type'] = $type;
         $data = json_encode($data,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
-        file_put_contents("webtype.json",$data);
-        $data2 = file_get_contents("key.json");
+        file_put_contents("./user_data/webtype.json",$data);
+        $data2 = file_get_contents("./user_data/key.json");
         $data2 = json_decode($data2,True);
         $data2['type'] = $type;
         $data2 = json_encode($data2,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
-        file_put_contents("key.json",$data2);
+        file_put_contents("./user_data/key.json",$data2);
 
         $m = array("code"=>200,"msg"=>"成功");
         exit(json_encode($m,JSON_UNESCAPED_UNICODE));
     }
     public function tctype(){
         $type = $_POST['tctype'];
-        $data = file_get_contents("tctype.json");
+        $data = file_get_contents("./user_data/tctype.json");
         $data = json_decode($data,True);
         $data['type'] = $type;
         $data = json_encode($data,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
-        file_put_contents("tctype.json",$data);
-        $data2 = file_get_contents("key.json");
+        file_put_contents("./user_data/tctype.json",$data);
+        $data2 = file_get_contents("./user_data/key.json");
         $data2 = json_decode($data2,True);
         $data2['tctype'] = $type;
         $data2 = json_encode($data2,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
-        file_put_contents("key.json",$data2);
+        file_put_contents("./user_data/key.json",$data2);
 
         $m = array("code"=>200,"msg"=>"成功");
         exit(json_encode($m,JSON_UNESCAPED_UNICODE));
@@ -151,7 +150,7 @@ class Adminapi extends Base
     public function dellink(){
         $key = $_GET['id'];
         $key = $key-1;
-        $data = file_get_contents("link.json");
+        $data = file_get_contents("./user_data/link.json");
         $data1 = json_decode($data,True);
         $num = $data1['count']-1;//获取数据数量
         $data1['count'] = $num;//删减数据数量
@@ -167,13 +166,13 @@ class Adminapi extends Base
         }
         $data1['data'] = $data;
         $data = json_encode($data1,JSON_UNESCAPED_UNICODE);
-        file_put_contents("link.json",$data);
+        file_put_contents("./user_data/link.json",$data);
 
         $m = array("code"=>200,"msg"=>"成功");
         exit(json_encode($m,JSON_UNESCAPED_UNICODE));
     }
     public function addlink(){
-        $data = file_get_contents("link.json");
+        $data = file_get_contents("./user_data/link.json");
         $data1 = json_decode($data,True);
         $data = $data1['data'];
         $num = count($data);
@@ -204,13 +203,13 @@ class Adminapi extends Base
         $data1['data'] = $data;
         $data1['count'] = $number;
         $data = json_encode($data1,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
-        file_put_contents("link.json",$data);
+        file_put_contents("./user_data/link.json",$data);
     
         $m = array("code"=>200,"msg"=>"成功");
         exit(json_encode($m,JSON_UNESCAPED_UNICODE));
     }
     public function editlink(){
-        $data = file_get_contents("link.json");
+        $data = file_get_contents("./user_data/link.json");
         $data1 = json_decode($data,True);
         $data = $data1['data'];
 
@@ -231,7 +230,7 @@ class Adminapi extends Base
 
         $data1['data'] = $data;
         $data = json_encode($data1,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
-        file_put_contents("link.json",$data);
+        file_put_contents("./user_data/link.json",$data);
 
         $m = array("code"=>200,"msg"=>"成功","id"=>$num);
         exit(json_encode($m,JSON_UNESCAPED_UNICODE));
@@ -242,7 +241,7 @@ class Adminapi extends Base
         $limit = $_GET['limit'];
         $limit_num = $page*$limit;
         $first_num = $limit*$page;
-        $data_file = 'jiekoushuju.json';
+        $data_file = './user_data/jiekoushuju.json';
         $data = file_get_contents($data_file);
         $data1 = json_decode($data,True);
         $data = $data1['data'];
@@ -341,7 +340,7 @@ class Adminapi extends Base
         $limit = $_GET['limit'];
         $limit_num = $page*$limit;
         $first_num = $limit*$page;
-        $data_file = 'link.json';
+        $data_file = './user_data/link.json';
         $data = file_get_contents($data_file);
         $data1 = json_decode($data,True);
         $data = $data1['data'];
