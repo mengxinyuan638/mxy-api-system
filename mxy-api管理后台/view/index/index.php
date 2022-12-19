@@ -372,25 +372,29 @@ include("./asd/a.php");
 									<p class="text-center"><span id="runtime_span"></span>
 										<script src="component/layui/layui.js"></script>
 										<script type="text/javascript">
+											layui.use('form', function() {
+												var $ = layui.jquery;
+												$.get("/index/webmsg", function(data4) { //请求建站时间
+													$("#runtime_span").attr("time",data4.data.start_time);//赋值属性，方便获取建站时间
+												}, "json");
+											})
+
 											function show_runtime() {
 												window.setTimeout("show_runtime()", 1000);
-												layui.use('form', function() {
-													var $ = layui.jquery;
-													$.get("/index/webmsg", function(data4) { //请求建站时间
-														X = new Date(data4.data.start_time); //建站时间定义
-														Y = new Date();
-														T = (Y.getTime() - X.getTime());
-														M = 24 * 60 * 60 * 1000;
-														a = T / M;
-														A = Math.floor(a);
-														b = (a - A) * 24;
-														B = Math.floor(b);
-														c = (b - B) * 60;
-														C = Math.floor((b - B) * 60);
-														D = Math.floor((c - C) * 60);
-														runtime_span.innerHTML = "本站稳定运行: " + A + "天" + B + "小时" + C + "分" + D + "秒"
-													}, "json");
-												})
+												var time_get = document.getElementById("runtime_span");
+												time_get = time_get.getAttribute("time");//获取时间
+												X = new Date(time_get); //建站时间定义
+												Y = new Date();
+												T = (Y.getTime() - X.getTime());
+												M = 24 * 60 * 60 * 1000;
+												a = T / M;
+												A = Math.floor(a);
+												b = (a - A) * 24;
+												B = Math.floor(b);
+												c = (b - B) * 60;
+												C = Math.floor((b - B) * 60);
+												D = Math.floor((c - C) * 60);
+												runtime_span.innerHTML = "本站稳定运行: " + A + "天" + B + "小时" + C + "分" + D + "秒"
 											}
 											show_runtime();
 										</script>
