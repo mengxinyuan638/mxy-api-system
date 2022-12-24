@@ -35,11 +35,11 @@ location / {
 
 ### 网站首页
 
-![](D:\Blog\文章\文章图片\README\home.png)
+![](./img/home.png)
 
-![](D:\Blog\文章\文章图片\README\home2.png)
+![](./img/home2.png)
 
-![](D:\Blog\文章\文章图片\README\home3.png)
+![](./img/home3.png)
 
 ### 登录界面
 
