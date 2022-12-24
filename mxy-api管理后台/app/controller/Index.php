@@ -122,13 +122,16 @@ class Index extends Fix
         $url = $data['url'];
         $qq = $data['qq'];
         $webname = $data['webname'];
-        $gg = $data['gg'];
         $tcgg = $data['tcgg'];
         $type = $data['type'];
         $tctype = $data['tctype'];
         $foot_msg = $data['foot_msg'];//获取底部信息
         $start_time = $data['start_time'];//获取建站时间
-        $m = array("code"=>200,"msg"=>"成功","data"=>array("url"=>$url,"qq"=>$qq,"webname"=>$webname,"gg"=>$gg,"tcgg"=>$tcgg,"type"=>$type,"tctype"=>$tctype,"foot_msg"=>$foot_msg,"start_time"=>$start_time));
+        $color = $data['font_color'];//获取字体颜色
+        $size = $data['font_size'];//获取字体大小
+        $size2 = $data['font_size2'];//获取字体大小
+        $margin = $data['margin_top'];//获取距离顶部距离
+        $m = array("code"=>200,"msg"=>"成功","data"=>array("url"=>$url,"qq"=>$qq,"webname"=>$webname,"tcgg"=>$tcgg,"type"=>$type,"tctype"=>$tctype,"foot_msg"=>$foot_msg,"start_time"=>$start_time,"color"=>$color,"size"=>$size,"margin"=>$margin,"size2"=>$size2));
         $m = json_encode($m,JSON_UNESCAPED_UNICODE);
         exit($m);
     }

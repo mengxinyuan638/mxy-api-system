@@ -27,12 +27,27 @@ class Indexcontr extends Base{
         return view::fetch();
     }
 
-
+    public function fontedit(){//字体修改部分
+        $color = $_POST['color'];
+        $size = $_POST['font_size'];
+        $size2 = $_POST['font_size2'];
+        $top = $_POST['margin_top'];
+        $data = file_get_contents("./user_data/key.json");
+        $data = json_decode($data,True);
+        $data['font_color'] = $color;
+        $data['font_size'] = $size;
+        $data['font_size2'] = $size2;
+        $data['margin_top'] = $top;
+        $data = json_encode($data,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
+        file_put_contents("./user_data/key.json",$data);
+        $m = array("code"=>200,"msg"=>"成功");
+        $m = json_encode($m,JSON_UNESCAPED_UNICODE);
+        exit($m);
+    }
     public function homeedit(){
         $name = $_POST['webname'];
         $qq = $_POST['qq'];
         $url = $_POST['weburl'];
-        $gg = $_POST['gg'];
         $tcgg = $_POST['tcgg'];
         $start_time = $_POST['date_change'];//获取改变的建站时间
         $data = file_get_contents("./user_data/key.json");
@@ -41,7 +56,6 @@ class Indexcontr extends Base{
         $data['webname'] = $name;
         $data['qq'] = $qq;
         $data['url'] = $url;
-        $data['gg'] = $gg;
         $data['tcgg'] = $tcgg;
         $data['start_time'] = $start_time;
         $data = json_encode($data,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码

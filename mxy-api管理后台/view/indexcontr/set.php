@@ -45,12 +45,6 @@
                             </div>
                         </div>
                         <div class="layui-form-item">
-                            <label class="layui-form-label">首页公告</label>
-                            <div class="layui-input-block">
-                                <input type="text" id="gg" name="gg" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
                             <label class="layui-form-label">弹窗公告</label>
                             <div class="layui-input-block">
                                 <input type="text" id="tcgg" name="tcgg" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
@@ -75,6 +69,38 @@
                             <label class="layui-form-label" id="tcggtips">弹窗公告</label>
                             <div class="layui-input-block" id="tc">
                             </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="layui-card" id="card2">
+                <div class="layui-card-header">首页字体管理</div>
+                <div class="layui-card-body" stytle="margin-left: 40px;">
+                    <form class="layui-form layui-form-pane" action="">
+                        <div class="layui-form-item" style="margin-top: 30px;">
+                            <label class="layui-form-label" id="qttips">字体颜色</label>
+                            <div id="color"></div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">标题大小</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="font_size" name="font_size" lay-verify="required" placeholder="请输入(单位px)" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">副题大小</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="font_size2" name="font_size2" lay-verify="required" placeholder="请输入(单位px)" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">顶部距离</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="margin_top" name="margin_top" lay-verify="required" placeholder="请输入(单位px)" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="fontedit">立即修改</button>
                         </div>
                     </form>
                 </div>
@@ -123,18 +149,45 @@
     </div>
     </div>
 
-
     <script src="../../layui/layui.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
         //请求web信息
-        layui.use(['form', 'upload', 'element', 'laydate'], function() {
+        layui.use(['form', 'upload', 'element', 'laydate', 'colorpicker'], function() {
             var $ = layui.jquery;
+            var colorpicker = layui.colorpicker;
             var layer = layui.layer;
             var form = layui.form;
             var webtype;
             var upload = layui.upload;
             var element = layui.element;
             var laydate = layui.laydate; //引入laydate模块，用作日期选择器
+
+            //字体颜色选择
+            colorpicker.render({
+                elem: '#color', //绑定元素
+                predefine: true,
+                done: function(color) {
+                    $('#color').attr('color', color);
+                }
+            });
+            //字体修改提交
+            form.on('submit(fontedit)', function(res) {
+                //AJAX
+                var k = $('#color').attr('color') //获取颜色
+                res.field.color = k; //赋值颜色
+                $.post("/indexcontr/fontedit", res.field, function(d) {
+                    if (d.code == 200) {
+                        $.post("/index/webmsg", function(d) {
+
+                        }, "json");
+                    } else {
+                        layer.alert('修改失败');
+                        if (d.code == 200) {
+                            layer.alert('修改成功');
+                        }
+                    }
+                }, "json");
+            })
             //维护按钮状态及弹窗按钮状态
             $.post("/index/webmsg", function(d) {
                 //这些起到回显作用
@@ -150,10 +203,13 @@
                         $("#date_change").attr("time", value) //给日期选择器赋值属性，方便传参
                     }
                 });
+                $('#color').attr('color',d.data.color);
+                $("body").find("#font_size2").val(d.data.size2);
+                $("body").find("#font_size").val(d.data.size);
+                $("body").find("#margin_top").val(d.data.margin);
                 $("body").find("#webname").val(d.data.webname);
                 $("body").find("#weburl").val(d.data.url);
                 $("body").find("#qq").val(d.data.qq);
-                $("body").find("#gg").val(d.data.gg);
                 $("body").find("#tcgg").val(d.data.tcgg);
                 if (d.data.type == "false") {
                     $("#bb").html("<input type=\"checkbox\" id=\"webtype\" lay-skin=\"switch\" lay-text=\"开启|关闭\" lay-filter=\"webtype\"/>");
@@ -278,7 +334,7 @@
                             $("body").find("#webname").val(d.data.webname);
                             $("body").find("#weburl").val(d.data.url);
                             $("body").find("#qq").val(d.data.qq);
-                            $("body").find("#gg").val(d.data.gg);
+
                             $("body").find("#tcgg").val(d.data.tcgg);
                         }, "json");
                     } else {

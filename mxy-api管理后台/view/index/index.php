@@ -26,19 +26,50 @@ include("./asd/a.php");
 </head>
 
 <body>
-	<header class="site-header" style="background: url({$backway});background-size: 100%;">
+	<script>
+		function get_size(type) {
+			var result
+			if (type == 'w') {
+				result = window.innerWidth;
+			} else {
+				result = window.innerHeight;
+			}
+			return result
+		}
+	</script>
+	<header class="site-header" style="background: url({$backway});background-size: 100%;background-size: cover;background-repeat: no-repeat;background-attachment:fixed;" id="header">
 		<nav class="nav_jsxs">
 			<span style="float: left;"><a class="logo_jsxs" href=""></a></span>
 			<a href="../">首页</a>
 			<a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=RctrqqLrcRrcV4PZnNwnsN_eR2hmGsQd&noverify=0">反馈</a>
 		</nav>
-		<div class="box-text">
-			<h1 id="homeh">萌新源API</h1>
+		<div class="animated" id="home_title_div">
+			<h1 id="homeh" class="animated"></h1>
 
 
-			<p>稳定、快速、免费的 API 接口服务<span class="package-amount">共收录了 <strong>{$number}</strong>个接口</span>
+			<p id="homep">
 			</p>
 			<style>
+				/* 向下箭头 */
+				@-webkit-keyframes rightan {
+
+					from {
+						bottom: 0%;
+						opacity: 0;
+					}
+
+					to {
+						bottom: 5%;
+						opacity: 1;
+					}
+				}
+
+				.rightan {
+					-webkit-animation: rightan 2s infinite;
+					-webkit-animation-fill-mode: both;
+				}
+
+
 				#nr {
 					font-size: 20px;
 					margin: 0;
@@ -76,61 +107,11 @@ include("./asd/a.php");
 					}
 				}
 			</style>
-			<div style="background-color:#333;border-radius:25px;box-shadow:0px 0px 5px #f200ff;padding:5px;margin-top:10px;margin-bottom:0px;">
-				<marquee>
-					<b id="gg" name="gg">萌新源API是萌新源免费提供API数据接口调用服务平台,各位不要攻击本站呦！</b>
-				</marquee>
+	
+			<div class="rightan">
+				<img src="images/down.png" width="35px" height="35px" style="margin-top: 20%;">
 			</div>
-			<center><span> 本站网址:</span>
-				<font color="red" id="url"></font><br />
-			</center>
-
-			当前时间：<span id="localtime"></span>
-			<script type="text/javascript">
-				function showLocale(objD) {
-					var str, colorhead, colorfoot;
-					var yy = objD.getYear();
-					if (yy < 1900) yy = yy + 1900;
-					var MM = objD.getMonth() + 1;
-					if (MM < 10) MM = '0' + MM;
-					var dd = objD.getDate();
-					if (dd < 10) dd = '0' + dd;
-					var hh = objD.getHours();
-					if (hh < 10) hh = '0' + hh;
-					var mm = objD.getMinutes();
-					if (mm < 10) mm = '0' + mm;
-					var ss = objD.getSeconds();
-					if (ss < 10) ss = '0' + ss;
-					var ww = objD.getDay();
-					if (ww == 0) colorhead = "<font color=\"#FF3030\">";
-					if (ww > 0 && ww < 6) colorhead = "<font color=\"#FF3030\">";
-					if (ww == 6) colorhead = "<font color=\"#FF3030\">";
-					if (ww == 0) ww = "星期日";
-					if (ww == 1) ww = "星期一";
-					if (ww == 2) ww = "星期二";
-					if (ww == 3) ww = "星期三";
-					if (ww == 4) ww = "星期四";
-					if (ww == 5) ww = "星期五";
-					if (ww == 6) ww = "星期六";
-					colorfoot = "</font>"
-					str = colorhead + yy + "-" + MM + "-" + dd + "丨" + hh + ":" + mm + ":" + ss + "丨" + ww + colorfoot;
-					return (str);
-				}
-
-				function tick() {
-					var today;
-					today = new Date();
-					document.getElementById("localtime").innerHTML = showLocale(today);
-					window.setTimeout("tick()", 1000);
-				}
-				tick();
-			</script>
-			<p></p>
-			</script>
-
-
-			</script>
-			</p>
+		</div>
 	</header>
 	<section class="content content-boxed">
 
@@ -375,14 +356,14 @@ include("./asd/a.php");
 											layui.use('form', function() {
 												var $ = layui.jquery;
 												$.get("/index/webmsg", function(data4) { //请求建站时间
-													$("#runtime_span").attr("time",data4.data.start_time);//赋值属性，方便获取建站时间
+													$("#runtime_span").attr("time", data4.data.start_time); //赋值属性，方便获取建站时间
 												}, "json");
 											})
 
 											function show_runtime() {
 												window.setTimeout("show_runtime()", 1000);
 												var time_get = document.getElementById("runtime_span");
-												time_get = time_get.getAttribute("time");//获取时间
+												time_get = time_get.getAttribute("time"); //获取时间
 												X = new Date(time_get); //建站时间定义
 												Y = new Date();
 												T = (Y.getTime() - X.getTime());
@@ -430,6 +411,8 @@ include("./asd/a.php");
 	<script>
 		layui.use('form', function() {
 			var $ = layui.jquery;
+			$('#header').css("height", get_size())
+			$('#homeh').css("margin-top", get_size() / 4)
 			$.get("/index/apidata", function(data) {
 				$("#listApi").prepend(data); //渲染api列表
 			})
@@ -441,9 +424,18 @@ include("./asd/a.php");
 			}, "json");
 			$.get("index/webmsg", function(res) {
 				var qq = $("body").find("#qq").text();
+				console.log(res.data.size2)
+
+				$('#homep').css('font-size',res.data.size2+'px');
+				$('#homeh').css('font-size',res.data.size+'px');
+				$('#homeh').css('margin-top',res.data.margin+'px');
+				$('#homeh').css('color',res.data.color);
+				$('#homep').css('color',res.data.color);
+				$('#homeh').addClass('layui-anim-scale');
+				$('#home_title_div').addClass('layui-anim-scale');
 				$("title").text(res.data.webname);
 				$("body").find("#homeh").text(res.data.webname);
-				$("body").find("#gg").text(res.data.gg);
+				$("body").find("#homep").text('稳定、快速、免费的 API 接口服务共收录了{$number}个接口');
 				$("body").find("#url").text(res.data.url);
 				$("body").find("#qq").text(qq + res.data.qq + "@qq.com");
 				if (res.data.tctype == "true") {
