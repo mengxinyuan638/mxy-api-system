@@ -35,31 +35,33 @@ location / {
 
 ### 登录界面
 
-![](https://zsy.juncikeji.xyz/i/img/login_page.png)
+![](./img/login_page.png)
 
 ### 首页
 
-![](https://zsy.juncikeji.xyz/i/img/home_page.png)
+![](./img/home_page.png)
 
 ### 前台预览
 
-![](https://zsy.juncikeji.xyz/i/img/index_view.png)
+![](./img/view_home.png)
 
 ### API信息管理
 
-![](https://zsy.juncikeji.xyz/i/img/api_msg.png)
+![](./img/api_msg.png)
 
 ### 前台信息管理
 
-![](https://zsy.juncikeji.xyz/i/img/msg_edit.png)
+![](./img/msg_home1.png)
+
+![](./img/msg_home2.png)
 
 ### 友链管理
 
-![](https://zsy.juncikeji.xyz/i/img/link.png)
+![](./img/link.png)
 
 ### 首页底部信息管理
 
-![](https://zsy.juncikeji.xyz/i/img/foot_page.png)
+![](./img/foot_page.png)
 
 
 
@@ -72,6 +74,10 @@ location / {
 2.v4.42以下版本如何升级？
 
 ​	请在pubilc目录下新建user_data目录，并将public目录下jiekoushuju.json等json文件移入user_data目录，并在user目录下新建uploads目录，uploads目录内也要分别新建back,icon目录，完成上述步骤后安正常流程升级即可
+
+2.更新完后后台信息管理一片空白怎么办？
+
+​	请将新增功能的管理信息执行修改一次，让系统自动补全数据缺失的部分，这样应该能解决
 
 
 
