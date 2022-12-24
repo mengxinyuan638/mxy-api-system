@@ -33,6 +33,14 @@ location / {
 
 ## 使用截图
 
+### 网站首页
+
+![](D:\Blog\文章\文章图片\README\home.png)
+
+![](D:\Blog\文章\文章图片\README\home2.png)
+
+![](D:\Blog\文章\文章图片\README\home3.png)
+
 ### 登录界面
 
 ![](./img/login_page.png)
@@ -75,7 +83,7 @@ location / {
 
 ​	请在pubilc目录下新建user_data目录，并将public目录下jiekoushuju.json等json文件移入user_data目录，并在user目录下新建uploads目录，uploads目录内也要分别新建back,icon目录，完成上述步骤后安正常流程升级即可
 
-2.更新完后后台信息管理一片空白怎么办？
+3.更新完后后台信息管理一片空白怎么办？
 
 ​	请将新增功能的管理信息执行修改一次，让系统自动补全数据缺失的部分，这样应该能解决
 
