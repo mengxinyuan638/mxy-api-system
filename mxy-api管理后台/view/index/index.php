@@ -617,7 +617,7 @@ include("./asd/a.php");
 				}
 			}, "json")
 			$.get("index/version", function(v) { //请求版本号
-				$("#my_foot").text("©2022 萌新源 Powered by 萌新源API管理系统" + v); //求求别修改，留个版权标识
+				$("#my_foot").html('<a href="https://gitee.com/meng-xinyuan-mxy/mxy-api/">©2023 萌新源 Powered by 萌新源API管理系统' + v + '</a>'); //求求别修改，留个版权标识
 			})
 		})
 	</script>
