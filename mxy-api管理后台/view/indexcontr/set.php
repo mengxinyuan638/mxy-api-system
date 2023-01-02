@@ -45,6 +45,12 @@
                             </div>
                         </div>
                         <div class="layui-form-item">
+                            <label class="layui-form-label">首页副标题</label>
+                            <div class="layui-input-block">
+                                <input type="text" id="title_2" name="title_2" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
                             <label class="layui-form-label">弹窗公告</label>
                             <div class="layui-input-block">
                                 <input type="text" id="tcgg" name="tcgg" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
@@ -152,7 +158,7 @@
     <script src="../../layui/layui.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
         //请求web信息
-        layui.use(['form', 'upload', 'element', 'laydate', 'colorpicker'], function() {
+        layui.use(['form', 'upload', 'element', 'laydate', 'colorpicker', 'element'], function() {
             var $ = layui.jquery;
             var colorpicker = layui.colorpicker;
             var layer = layui.layer;
@@ -161,6 +167,7 @@
             var upload = layui.upload;
             var element = layui.element;
             var laydate = layui.laydate; //引入laydate模块，用作日期选择器
+            var element = layui.element; //折叠面板依赖
 
             //字体颜色选择
             colorpicker.render({
@@ -203,7 +210,7 @@
                         $("#date_change").attr("time", value) //给日期选择器赋值属性，方便传参
                     }
                 });
-                $('#color').attr('color',d.data.color);
+                $('#color').attr('color', d.data.color);
                 $("body").find("#font_size2").val(d.data.size2);
                 $("body").find("#font_size").val(d.data.size);
                 $("body").find("#margin_top").val(d.data.margin);
@@ -211,6 +218,7 @@
                 $("body").find("#weburl").val(d.data.url);
                 $("body").find("#qq").val(d.data.qq);
                 $("body").find("#tcgg").val(d.data.tcgg);
+                $("body").find("#title_2").val(d.data.title2);
                 if (d.data.type == "false") {
                     $("#bb").html("<input type=\"checkbox\" id=\"webtype\" lay-skin=\"switch\" lay-text=\"开启|关闭\" lay-filter=\"webtype\"/>");
                     form.render('checkbox'); //渲染
@@ -326,7 +334,7 @@
                 }
             })
 
-            form.on('submit(homeedit)', function(res) {
+            form.on('submit(homeedit)', function(res) { //修改前台信息管理的操作
                 //AJAX
                 $.post("/indexcontr/homeedit", res.field, function(d) {
                     if (d.code == 200) {
@@ -334,8 +342,8 @@
                             $("body").find("#webname").val(d.data.webname);
                             $("body").find("#weburl").val(d.data.url);
                             $("body").find("#qq").val(d.data.qq);
-
                             $("body").find("#tcgg").val(d.data.tcgg);
+                            $("body").find("#title_2").val(d.data.title2);
                         }, "json");
                     } else {
                         layer.alert('修改失败');

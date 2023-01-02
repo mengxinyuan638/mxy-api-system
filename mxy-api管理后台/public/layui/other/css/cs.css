@@ -1,0 +1,246 @@
+.ribbon-box-yuan {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    padding: 0 15px;
+    height: 36px;
+    line-height: 36px;
+    color: #fff;
+    z-index: 500;
+  }
+  .ribbon-box-yuan:before {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    content: "";
+  }
+  
+  .ribbon-bookmark .ribbon-box-yuan {
+    padding-left: 0;
+  }
+  .ribbon-bookmark .ribbon-box-yuan:before {
+    top: 0;
+    right: 100%;
+    border: 18px solid;
+    border-left-width: 10px;
+  }
+  .ribbon-modern .ribbon-box-yuan {
+    top: 0;
+  }
+  .ribbon-modern .ribbon-box-yuan:before {
+    top: 0;
+    right: 100%;
+    border: 18px solid;
+  }
+  .ribbon-left .ribbon-box-yuan {
+    right: auto;
+    left: 0;
+  }
+  .ribbon-left.ribbon-bookmark .ribbon-box-yuan {
+    padding-left: 15px;
+    padding-right: 0;
+  }
+  .ribbon-left.ribbon-bookmark .ribbon-box-yuan:before {
+    right: auto;
+    left: 100%;
+    border-left-width: 18px;
+    border-right-width: 10px;
+  }
+  .ribbon-left.ribbon-modern .ribbon-box-yuan:before {
+    right: auto;
+    left: 100%;
+  }
+  .ribbon-bottom .ribbon-box-yuan {
+    top: auto;
+    bottom: 10px;
+  }
+  .ribbon-bottom.ribbon-modern .ribbon-box-yuan {
+    bottom: 0;
+  }
+  .ribbon-primary .ribbon-box-yuan {
+    background-color: #5c90d2;
+  }
+  .ribbon-primary.ribbon-bookmark .ribbon-box-yuan:before {
+    border-color: #5c90d2;
+    border-left-color: transparent;
+  }
+  .ribbon-primary.ribbon-bookmark.ribbon-left .ribbon-box-yuan:before {
+    border-color: #5c90d2;
+    border-right-color: transparent;
+  }
+  .ribbon-primary.ribbon-modern .ribbon-box-yuan:before {
+    border-color: #5c90d2;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .ribbon-primary.ribbon-modern.ribbon-bottom .ribbon-box-yuan:before {
+    border-color: #5c90d2;
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+  .ribbon-primary.ribbon-modern.ribbon-left .ribbon-box-yuan:before {
+    border-color: #5c90d2;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .ribbon-primary.ribbon-modern.ribbon-left.ribbon-bottom .ribbon-box-yuan:before {
+    border-color: #5c90d2;
+    border-top-color: transparent;
+    border-right-color: transparent;
+  }
+  .ribbon-success .ribbon-box-yuan {
+    background-color: #46c37b;
+  }
+  .ribbon-success.ribbon-bookmark .ribbon-box-yuan:before {
+    border-color: #46c37b;
+    border-left-color: transparent;
+  }
+  .ribbon-success.ribbon-bookmark.ribbon-left .ribbon-box-yuan:before {
+    border-color: #46c37b;
+    border-right-color: transparent;
+  }
+  .ribbon-success.ribbon-modern .ribbon-box-yuan:before {
+    border-color: #46c37b;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .ribbon-success.ribbon-modern.ribbon-bottom .ribbon-box-yuan:before {
+    border-color: #46c37b;
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+  .ribbon-success.ribbon-modern.ribbon-left .ribbon-box-yuan:before {
+    border-color: #46c37b;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .ribbon-success.ribbon-modern.ribbon-left.ribbon-bottom .ribbon-box-yuan:before {
+    border-color: #46c37b;
+    border-top-color: transparent;
+    border-right-color: transparent;
+  }
+  .ribbon-info .ribbon-box-yuan {
+    background-color: #70b9eb;
+  }
+  .ribbon-info.ribbon-bookmark .ribbon-box-yuan:before {
+    border-color: #70b9eb;
+    border-left-color: transparent;
+  }
+  .ribbon-info.ribbon-bookmark.ribbon-left .ribbon-box-yuan:before {
+    border-color: #70b9eb;
+    border-right-color: transparent;
+  }
+  .ribbon-info.ribbon-modern .ribbon-box-yuan:before {
+    border-color: #70b9eb;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .ribbon-info.ribbon-modern.ribbon-bottom .ribbon-box-yuan:before {
+    border-color: #70b9eb;
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+  .ribbon-info.ribbon-modern.ribbon-left .ribbon-box-yuan:before {
+    border-color: #70b9eb;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .ribbon-info.ribbon-modern.ribbon-left.ribbon-bottom .ribbon-box-yuan:before {
+    border-color: #70b9eb;
+    border-top-color: transparent;
+    border-right-color: transparent;
+  }
+  .ribbon-warning .ribbon-box-yuan {
+    background-color: #f3b760;
+  }
+  .ribbon-warning.ribbon-bookmark .ribbon-box-yuan:before {
+    border-color: #f3b760;
+    border-left-color: transparent;
+  }
+  .ribbon-warning.ribbon-bookmark.ribbon-left .ribbon-box-yuan:before {
+    border-color: #f3b760;
+    border-right-color: transparent;
+  }
+  .ribbon-warning.ribbon-modern .ribbon-box-yuan:before {
+    border-color: #f3b760;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .ribbon-warning.ribbon-modern.ribbon-bottom .ribbon-box-yuan:before {
+    border-color: #f3b760;
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+  .ribbon-warning.ribbon-modern.ribbon-left .ribbon-box-yuan:before {
+    border-color: #f3b760;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .ribbon-warning.ribbon-modern.ribbon-left.ribbon-bottom .ribbon-box-yuan:before {
+    border-color: #f3b760;
+    border-top-color: transparent;
+    border-right-color: transparent;
+  }
+  .ribbon-danger .ribbon-box-yuan {
+    background-color: #d26a5c;
+  }
+  .ribbon-danger.ribbon-bookmark .ribbon-box-yuan:before {
+    border-color: #d26a5c;
+    border-left-color: transparent;
+  }
+  .ribbon-danger.ribbon-bookmark.ribbon-left .ribbon-box-yuan:before {
+    border-color: #d26a5c;
+    border-right-color: transparent;
+  }
+  .ribbon-danger.ribbon-modern .ribbon-box-yuan:before {
+    border-color: #d26a5c;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .ribbon-danger.ribbon-modern.ribbon-bottom .ribbon-box-yuan:before {
+    border-color: #d26a5c;
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+  .ribbon-danger.ribbon-modern.ribbon-left .ribbon-box-yuan:before {
+    border-color: #d26a5c;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .ribbon-danger.ribbon-modern.ribbon-left.ribbon-bottom .ribbon-box-yuan:before {
+    border-color: #d26a5c;
+    border-top-color: transparent;
+    border-right-color: transparent;
+  }
+  .ribbon-crystal .ribbon-box-yuan {
+    background-color: rgba(255, 255, 255, 0.35);
+  }
+  .ribbon-crystal.ribbon-bookmark .ribbon-box-yuan:before {
+    border-color: rgba(255, 255, 255, 0.35);
+    border-left-color: transparent;
+  }
+  .ribbon-crystal.ribbon-bookmark.ribbon-left .ribbon-box-yuan:before {
+    border-color: rgba(255, 255, 255, 0.35);
+    border-right-color: transparent;
+  }
+  .ribbon-crystal.ribbon-modern .ribbon-box-yuan:before {
+    border-color: rgba(255, 255, 255, 0.35);
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .ribbon-crystal.ribbon-modern.ribbon-bottom .ribbon-box-yuan:before {
+    border-color: rgba(255, 255, 255, 0.35);
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+  .ribbon-crystal.ribbon-modern.ribbon-left .ribbon-box-yuan:before {
+    border-color: rgba(255, 255, 255, 0.35);
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+  .ribbon-crystal.ribbon-modern.ribbon-left.ribbon-bottom .ribbon-box-yuan:before {
+    border-color: rgba(255, 255, 255, 0.35);
+    border-top-color: transparent;
+    border-right-color: transparent;
+  }

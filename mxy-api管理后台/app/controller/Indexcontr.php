@@ -3,11 +3,9 @@
 
 namespace app\controller;
 
-use app\BaseController;
 
 use think\facade\View;
 
-use think\Request;
 
 use think\facade\Env;
 
@@ -49,6 +47,7 @@ class Indexcontr extends Base{
         $qq = $_POST['qq'];
         $url = $_POST['weburl'];
         $tcgg = $_POST['tcgg'];
+        $title2 = $_POST['title_2'];
         $start_time = $_POST['date_change'];//获取改变的建站时间
         $data = file_get_contents("./user_data/key.json");
         $data = json_decode($data,True);
@@ -57,6 +56,7 @@ class Indexcontr extends Base{
         $data['qq'] = $qq;
         $data['url'] = $url;
         $data['tcgg'] = $tcgg;
+        $data['title_2'] = $title2;
         $data['start_time'] = $start_time;
         $data = json_encode($data,JSON_UNESCAPED_UNICODE);//第二个参数是防止中文乱码
         file_put_contents("./user_data/key.json",$data);
