@@ -520,7 +520,7 @@ include("./asd/a.php");
 
 			//导航动画
 			if ($(window).width() > MQL) {
-				$("#mainNav").html('<a class="navbar-brand" href="#">萌新源API</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarResponsive"><ul class="navbar-nav ml-auto mt-2 mt-lg-0"><li class="nav-item active"><a class="nav-link" href="/">首页</a></li><form class="form-inline my-0 my-lg-0"><input class="form-control mr-sm-2" type="search" placeholder="Search" id="search-value"><button class="btn btn-outline-success my-2 my-sm-0" type="button" id="search-btn" data-toggle="dropdown">搜索</button><div class="dropdown-menu dropdown-menu-lg-right" id="dropdown-menu"></div></form></ul></div>');
+				$("#mainNav").html('<a class="navbar-brand" href="#" id="nav-title"></a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarResponsive"><ul class="navbar-nav ml-auto mt-2 mt-lg-0"><li class="nav-item active"><a class="nav-link" href="/">首页</a></li><form class="form-inline my-0 my-lg-0"><input class="form-control mr-sm-2" type="search" placeholder="Search" id="search-value"><button class="btn btn-outline-success my-2 my-sm-0" type="button" id="search-btn" data-toggle="dropdown">搜索</button><div class="dropdown-menu dropdown-menu-lg-right" id="dropdown-menu"></div></form></ul></div>');
 				var headerHeight = $('#mainNav').height();
 				$(window).on('scroll', {
 						previousTop: 0
@@ -605,6 +605,7 @@ include("./asd/a.php");
 				$('#home_title_div').addClass('layui-anim-scale');
 				$("title").text(res.data.webname);
 				$("body").find("#homeh").text(res.data.webname);
+				$("body").find("#nav-title").text(res.data.webname);
 				$("body").find("#homep").text(title2);
 				$("body").find("#url").text(res.data.url);
 				$("body").find("#qq").text(qq + res.data.qq + "@qq.com");
@@ -616,7 +617,7 @@ include("./asd/a.php");
 				}
 			}, "json")
 			$.get("index/version", function(v) { //请求版本号
-				$("#my_foot").text("©2022 萌新源 Powered by 萌新源API管理系统" + v); //求求别修改，留个版权标识
+				$("#my_foot").html('<a href="https://gitee.com/meng-xinyuan-mxy/mxy-api/">©2023 萌新源 Powered by 萌新源API管理系统' + v + '</a>'); //求求别修改，留个版权标识
 			})
 		})
 	</script>
