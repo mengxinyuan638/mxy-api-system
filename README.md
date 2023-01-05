@@ -1,4 +1,28 @@
-# 萌新源API+API管理后台v6.0
+<p align="center">
+  <a href="https://v2.nonebot.dev/"><img src="https://zsy.juncikeji.xyz/i/img/mxy.png" width="150" height="150" alt="API管理系统"></a>
+</p>
+
+<div align="center">
+    <h1 align="center">✨萌新源API管理系统</h1>
+</div>
+<p align="center">
+<!-- 系统版本 -->
+<img src="https://img.shields.io/badge/萌新源API-v6.0-blue" alt="python">
+<!-- PHP版本 -->
+<img src="https://img.shields.io/badge/PHP-7.0+-blue" alt="PHP">
+<!-- Layui -->
+<img src="https://img.shields.io/badge/-Layui-00FF00" />
+<!-- Bootstrap -->
+<img src="https://img.shields.io/badge/-Bootstrap-F0F8FF?style=flat-square&logo=bootstrap" />
+<!-- HTML -->
+<img src="https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" />
+<!-- CSS -->
+<img src="https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=css3" />
+<!-- javascript -->
+<img src="https://img.shields.io/badge/-JavaScript-oringe?style=flat-square&logo=javascript" />
+</p>
+
+
 
 ## 介绍
 前端基于layui以及pear-Admin-layui,bootstrap
