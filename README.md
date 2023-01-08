@@ -67,7 +67,7 @@ location / {
 
 搜索api功能
 
-![](D:\Blog\文章\文章图片\README\gome-search.png)
+![](./img/gome-search.png)
 
 API列表
 
@@ -79,15 +79,15 @@ API列表
 
 #### 手机端
 
-![](D:\Blog\文章\文章图片\README\phone-home.png)
+![](./img/phone-home.png)
 
 API列表
 
-![](D:\Blog\文章\文章图片\README\phone-home2.png)
+![](./img/phone-home2.png)
 
 友情链接列表
 
-![](D:\Blog\文章\文章图片\README\phone-home3.png)
+![](./img/phone-home3.png)
 
 ### 登录界面
 
