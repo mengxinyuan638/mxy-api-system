@@ -16,7 +16,7 @@ class Index extends Fix
 {
     public function version() //返回版本号，请不要擅自修改
     {
-        $v = 'v6.0';
+        $v = 'v6.1';
         return $v;
     }
     public function search()
@@ -67,12 +67,14 @@ class Index extends Fix
         include('key.php');
         $iconway = Env::get('logo.way');
         $backway = Env::get("background.imgway");
+        $phoneway = Env::get("phoneback.phone");
         View::assign('way', $iconway);
         View::assign('backway', $backway);
         View::assign('key', $key);
         View::assign('number', $num);
         View::assign('qq', $qq);
         View::assign('url', $url);
+        View::assign('phoneway', $phoneway);
         return view::fetch();
     }
 

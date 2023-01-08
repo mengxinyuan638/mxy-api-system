@@ -10,8 +10,8 @@ include("./asd/a.php");
 	<title id="title">萌新源API - 免费提供API服务</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="description" content="萌新源API是萌新源免费提供API数据接口调用服务平台 - 我们致力于为用户提供稳定、快速的免费API数据接口服务。">
-	<meta name="keywords" content="API,聚合数据,API数据接口,API,免费接口,免费api接口调用,免费API数据调用,萌新源API,萌新源API">
+	<meta name="description" content="本API基于萌新源API管理系统搭建,欢迎各位使用">
+	<meta name="keywords" content="API,聚合数据,API数据接口,API,免费接口,免费api接口调用,免费API数据调用">
 	<meta name="author" content="萌新源">
 	<meta name="founder" content="萌新源API">
 	<link href="./bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -208,7 +208,7 @@ include("./asd/a.php");
 		}
 	</script>
 	<nav class=" navbar navbar-expand-lg navbar-light fixed-top " id="mainNav"></nav>
-	<header class="site-header" style="background: url({$backway});background-size: 100%;background-size: cover;background-repeat: no-repeat;background-attachment:fixed;" id="header">
+	<header class="site-header" style="background-size: 100%;background-size: cover;background-repeat: no-repeat;background-attachment:fixed;" id="header">
 		<nav class="nav_jsxs">
 
 		</nav>
@@ -517,7 +517,12 @@ include("./asd/a.php");
 			var MQL = 997;
 
 
-
+			//背景判断
+			if ($(window).width() > MQL) {
+				$("#header").css("background-image", "url({$backway})")
+			}else{
+				$("#header").css("background-image", "url({$phoneway})")
+			}
 			//导航动画
 			if ($(window).width() > MQL) {
 				$("#mainNav").html('<a class="navbar-brand" href="#" id="nav-title"></a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarResponsive"><ul class="navbar-nav ml-auto mt-2 mt-lg-0"><li class="nav-item active"><a class="nav-link" href="/">首页</a></li><form class="form-inline my-0 my-lg-0"><input class="form-control mr-sm-2" type="search" placeholder="Search" id="search-value"><button class="btn btn-outline-success my-2 my-sm-0" type="button" id="search-btn" data-toggle="dropdown">搜索</button><div class="dropdown-menu dropdown-menu-lg-right" id="dropdown-menu"></div></form></ul></div>');
@@ -617,7 +622,7 @@ include("./asd/a.php");
 				}
 			}, "json")
 			$.get("index/version", function(v) { //请求版本号
-				$("#my_foot").html('<a href="https://gitee.com/meng-xinyuan-mxy/mxy-api/">©2023 萌新源 Powered by 萌新源API管理系统' + v + '</a>'); //求求别修改，留个版权标识
+				$("#my_foot").text("©2022 萌新源 Powered by 萌新源API管理系统" + v); //求求别修改，留个版权标识
 			})
 		})
 	</script>

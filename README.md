@@ -1,13 +1,12 @@
 <p align="center">
   <a href="https://v2.nonebot.dev/"><img src="https://zsy.juncikeji.xyz/i/img/mxy.png" width="150" height="150" alt="API管理系统"></a>
 </p>
-
 <div align="center">
     <h1 align="center">✨萌新源API管理系统</h1>
 </div>
 <p align="center">
 <!-- 系统版本 -->
-<img src="https://img.shields.io/badge/萌新源API-v6.0-blue" alt="python">
+<img src="https://img.shields.io/badge/萌新源API-v6.1-blue" alt="python">
 <!-- PHP版本 -->
 <img src="https://img.shields.io/badge/PHP-7.0+-blue" alt="PHP">
 <!-- Layui -->
@@ -21,6 +20,7 @@
 <!-- javascript -->
 <img src="https://img.shields.io/badge/-JavaScript-oringe?style=flat-square&logo=javascript" />
 </p>
+
 
 
 

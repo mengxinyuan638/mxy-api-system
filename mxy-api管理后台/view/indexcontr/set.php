@@ -138,8 +138,9 @@
                     <div class="layui-card-body" style="margin: 0 auto; text-align: center">
                         <div class="layui-upload">
                             <button type="button" class="layui-btn" id="upback">上传图片</button>
+                            <button type="button" class="layui-btn" id="upphone">手机背景</button>
                             <div class="layui-upload-list">
-                                <img class="layui-upload-img" id="back" style="width:534px;height:300px;">
+                                <img class="layui-upload-img" id="back" style="height:300px;">
                                 <p id="demoText"></p>
                             </div>
                             <div style="width: 534px;margin: 0 auto; text-align: center">
@@ -168,6 +169,48 @@
             var element = layui.element;
             var laydate = layui.laydate; //引入laydate模块，用作日期选择器
             var element = layui.element; //折叠面板依赖
+
+
+            //解决手机端超宽度显示问题
+            var MQL = 997;
+            if ($(window).width() > MQL) {
+                $("#back").css("width", "534");
+            } else {
+                $("#back").css("width", "300");
+            }
+
+            function setpage() {
+                var width = window.innerWidth;
+                if (width > 600) {
+                    return ['30%', '95%']
+                } else {
+                    return ['90%', '95%']
+                }
+            }
+            //iframe 层
+            $('#upphone').on('click', function() {
+                if ($(window).width() > MQL) {
+                    layer.open({
+                        type: 2,
+                        title: '手机背景上传',
+                        shadeClose: true,
+                        shade: false,
+                        maxmin: true, //开启最大化最小化按钮
+                        area: setpage(),
+                        content: '/indexcontr/upphone'
+                    });
+                } else {
+                    layer.open({
+                        type: 2,
+                        title: '手机背景上传',
+                        shadeClose: true,
+                        shade: false,
+                        maxmin: true, //开启最大化最小化按钮
+                        area: setpage(),
+                        content: '/indexcontr/upphone'
+                    });
+                }
+            })
 
             //字体颜色选择
             colorpicker.render({
@@ -356,7 +399,7 @@
             //图标上传
             var uploadInst = upload.render({
                 elem: '#icon',
-                url: '/indexcontr/iconupload' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
+                url: '/indexcontr/iconupload' //图片上传接口
                     ,
                 before: function(obj) {
                     //预读本地文件示例，不支持ie8
@@ -402,7 +445,7 @@
             //背景上传
             var uploadInst = upload.render({
                 elem: '#upback',
-                url: '/indexcontr/backupload' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
+                url: '/indexcontr/backupload' //上传接口
                     ,
                 before: function(obj) {
                     //预读本地文件示例，不支持ie8

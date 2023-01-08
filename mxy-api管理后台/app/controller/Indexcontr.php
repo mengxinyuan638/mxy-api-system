@@ -14,7 +14,9 @@ class Indexcontr extends Base{
     {   
         return view::fetch();
     }
-
+    public function upphone(){//上传手机背景
+        return view::fetch();
+    }
     public function linkset()//前台信息设置页面
     {   
         return view::fetch();
@@ -159,6 +161,49 @@ class Indexcontr extends Base{
                 fclose($fp2);
                 move_uploaded_file($_FILES["file"]["tmp_name"],'./user_data/uploads/back/'. $_FILES["file"]["name"]);
                 $img = "upload/back/".$_FILES["file"]["name"];
+                exit(json_encode(array('code'=>0, 'msg'=>$img),JSON_UNESCAPED_UNICODE));
+            }
+        }
+    }
+    public function phoneupload(){
+        $file = $_FILES['file']; // 获取上传的文件
+        $name_back = "./user_data/uploads/phoneback/".$_FILES["file"]["name"];
+        if ($file==null) {
+            exit(json_encode(array('code'=>1, 'msg'=>'未上传图片'),JSON_UNESCAPED_UNICODE));
+        }
+        // 获取文件后缀
+        $temp = explode(".", $_FILES["file"]["name"]);
+        $extension = end($temp);
+        // 判断文件是否合法
+        if(!in_array($extension, array("gif","jpeg","jpg","png"))){
+            exit(json_encode(array('code'=>2, 'msg'=>'上传图片不合法'),JSON_UNESCAPED_UNICODE));
+        }else if(file_exists($name_back)){
+            $msg = "图片已经上传过了，不能再上传了";
+            exit(json_encode(array('code'=>3, 'msg'=>$msg),JSON_UNESCAPED_UNICODE));
+        }else{
+            $env_imgway = Env::get("phoneback.phone");
+            $env_way2 = "PHONE = ".$env_imgway;
+            if(empty($env_imgway)){ //判断之前是不是添加过了
+                $pz = '../.env';
+                $fp = file_get_contents($pz);//读取配置
+                $fp2=fopen($pz,'w');
+                $head = '[PHONEBACK]';
+                $name = 'PHONE = ./user_data/uploads/phoneback/'. $_FILES["file"]["name"];
+                fwrite($fp2,$fp."\r\n".$head."\r\n".$name);   
+                fclose($fp2);
+                move_uploaded_file($_FILES["file"]["tmp_name"],'./user_data/uploads/phoneback/'. $_FILES["file"]["name"]);
+                $img = "upload/phoneback/".$_FILES["file"]["name"];
+                exit(json_encode(array('code'=>0, 'msg'=>$img),JSON_UNESCAPED_UNICODE));
+            }else{
+                $pz = '../.env';
+                $fp = file_get_contents($pz);//读取配置
+                $name = 'PHONE = ./user_data/uploads/phoneback/'. $_FILES["file"]["name"];
+                $fp = str_replace($env_way2,$name,$fp);
+                $fp2=fopen($pz,'w');
+                fwrite($fp2,$fp);   
+                fclose($fp2);
+                move_uploaded_file($_FILES["file"]["tmp_name"],'./user_data/uploads/phoneback/'. $_FILES["file"]["name"]);
+                $img = "upload/phoneback/".$_FILES["file"]["name"];
                 exit(json_encode(array('code'=>0, 'msg'=>$img),JSON_UNESCAPED_UNICODE));
             }
         }
