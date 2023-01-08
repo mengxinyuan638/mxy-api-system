@@ -59,11 +59,35 @@ location / {
 
 ### 网站首页
 
+电脑端手机端不同，可自定义
+
+#### 电脑端
+
 ![](./img/home.png)
+
+搜索api功能
+
+![](D:\Blog\文章\文章图片\README\gome-search.png)
+
+API列表
 
 ![](./img/home2.png)
 
+友情链接
+
 ![](./img/home3.png)
+
+#### 手机端
+
+![](D:\Blog\文章\文章图片\README\phone-home.png)
+
+API列表
+
+![](D:\Blog\文章\文章图片\README\phone-home2.png)
+
+友情链接列表
+
+![](D:\Blog\文章\文章图片\README\phone-home3.png)
 
 ### 登录界面
 
@@ -186,6 +210,12 @@ location / {
 - 优化api列表卡片
 - 优化封面直达按钮下滑动画
 - 美化友情链接
+
+2023.1.8 v6.1
+
+- 新增手机电脑壁纸自定义，支持不同壁纸
+- 优化seo
+- 做了一些细节处理
 
 
 
