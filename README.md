@@ -3,6 +3,7 @@
 </p>
 <div align="center">
     <h1 align="center">✨萌新源API管理系统</h1>
+    <a href="https://www.murphysec.com/accept?code=fc3c57e9f4f48dad68b8a4f69b5c1a11&type=1&from=2&t=2" alt="Security Status"><img src="https://www.murphysec.com/platform3/v3/badge/1615712069551161344.svg?t=1" /></a>
 </div>
 <p align="center">
 <!-- 系统版本 -->
@@ -20,9 +21,6 @@
 <!-- javascript -->
 <img src="https://img.shields.io/badge/-JavaScript-oringe?style=flat-square&logo=javascript" />
 </p>
-
-
-
 
 ## 介绍
 前端基于layui以及pear-Admin-layui,bootstrap
